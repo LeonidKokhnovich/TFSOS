@@ -13,6 +13,11 @@
 		8402C6821C8B725500287DC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8402C6801C8B725500287DC1 /* Main.storyboard */; };
 		8402C6841C8B725500287DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8402C6831C8B725500287DC1 /* Assets.xcassets */; };
 		8402C6871C8B725500287DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8402C6851C8B725500287DC1 /* LaunchScreen.storyboard */; };
+		8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */; };
+		8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */; };
+		8402C6981C8B730700287DC1 /* NetworkCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6971C8B730700287DC1 /* NetworkCommunicator.m */; };
+		8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69B1C8B732D00287DC1 /* SOSModel.m */; };
+		8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69E1C8B733A00287DC1 /* UserInfoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,16 @@
 		8402C6831C8B725500287DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8402C6861C8B725500287DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8402C6881C8B725500287DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8402C68F1C8B72AB00287DC1 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
+		8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
+		8402C6921C8B72E500287DC1 /* SOSRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSRequestViewController.h; sourceTree = "<group>"; };
+		8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSRequestViewController.m; sourceTree = "<group>"; };
+		8402C6961C8B730700287DC1 /* NetworkCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkCommunicator.h; sourceTree = "<group>"; };
+		8402C6971C8B730700287DC1 /* NetworkCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCommunicator.m; sourceTree = "<group>"; };
+		8402C69A1C8B732D00287DC1 /* SOSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSModel.h; sourceTree = "<group>"; };
+		8402C69B1C8B732D00287DC1 /* SOSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSModel.m; sourceTree = "<group>"; };
+		8402C69D1C8B733A00287DC1 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		8402C69E1C8B733A00287DC1 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,9 @@
 		8402C6761C8B725500287DC1 /* SOS */ = {
 			isa = PBXGroup;
 			children = (
+				8402C6991C8B731A00287DC1 /* Model */,
+				8402C6951C8B72F200287DC1 /* Networking */,
+				8402C68E1C8B729400287DC1 /* View Controllers */,
 				8402C67A1C8B725500287DC1 /* AppDelegate.h */,
 				8402C67B1C8B725500287DC1 /* AppDelegate.m */,
 				8402C67D1C8B725500287DC1 /* ViewController.h */,
@@ -77,6 +95,37 @@
 				8402C6781C8B725500287DC1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8402C68E1C8B729400287DC1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8402C68F1C8B72AB00287DC1 /* RegisterUserViewController.h */,
+				8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */,
+				8402C6921C8B72E500287DC1 /* SOSRequestViewController.h */,
+				8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8402C6951C8B72F200287DC1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8402C6961C8B730700287DC1 /* NetworkCommunicator.h */,
+				8402C6971C8B730700287DC1 /* NetworkCommunicator.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		8402C6991C8B731A00287DC1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8402C69A1C8B732D00287DC1 /* SOSModel.h */,
+				8402C69B1C8B732D00287DC1 /* SOSModel.m */,
+				8402C69D1C8B733A00287DC1 /* UserInfoModel.h */,
+				8402C69E1C8B733A00287DC1 /* UserInfoModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +198,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */,
 				8402C67F1C8B725500287DC1 /* ViewController.m in Sources */,
 				8402C67C1C8B725500287DC1 /* AppDelegate.m in Sources */,
+				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
+				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
 				8402C6791C8B725500287DC1 /* main.m in Sources */,
+				8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */,
+				8402C6981C8B730700287DC1 /* NetworkCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
