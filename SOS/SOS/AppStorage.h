@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AppStorage : NSObject <Singleton>
 
-- (void)saveUserUUID:(NSString *)userUUID;
-- (NSString *)userUUID;
+- (void)saveUserUUID:(NSString * _Nullable)userUUID;
+- (NSString * _Nullable)userUUID;
 
 @end
+
+NS_ASSUME_NONNULL_END

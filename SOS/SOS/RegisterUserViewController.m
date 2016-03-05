@@ -9,29 +9,108 @@
 #import "RegisterUserViewController.h"
 
 @interface RegisterUserViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *birthDateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *homeAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emergencyContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emergencyNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *secretCodeTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomLayoutConstraint;
 
 @end
 
 @implementation RegisterUserViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+#pragma mark -
+#pragma mark Life Circle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self subscribeToNotifications];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self unsubscribeFromNotifications];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark User Actions
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark -
+#pragma mark Public Methods
+
+- (IBAction)onRegisterButtonTapped:(id)sender
+{
+    
 }
-*/
+
+#pragma mark -
+#pragma mark Accessories
+
+#pragma mark -
+#pragma mark Helper Methods
+
+#pragma mark Subcribers
+
+- (void)subscribeToNotifications
+{
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(onKeyboardWillAppearNotification:)
+//                                                 name:UIKeyboardWillShowNotification
+//                                               object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(onKeyboardWillAppearNotification:)
+//                                                 name:UIKeyboardWillHideNotification
+//                                               object:nil];
+}
+
+- (void)unsubscribeFromNotifications
+{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark -
+#pragma mark Delegate Methods
+
+#pragma mark -
+#pragma mark Notifications Handling Methods
+
+//- (void)onKeyboardWillAppearNotification:(NSNotification *)notification
+//{
+//    CGSize keyboardSize = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+//    double animationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+//    UIViewAnimationCurve animationCurve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:animationDuration];
+//    [UIView setAnimationCurve:animationCurve];
+//    
+//    self.scrollViewBottomLayoutConstraint.constant = -keyboardSize.height;
+//    [self.scrollView setNeedsLayout];
+//    
+//    [UIView commitAnimations];
+//}
+//
+//- (void)onKeyboardWillDisappearNotification:(NSNotification *)notification
+//{
+//    double animationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+//    UIViewAnimationCurve animationCurve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:animationDuration];
+//    [UIView setAnimationCurve:animationCurve];
+//    
+//    self.scrollViewBottomLayoutConstraint.constant = 0;
+//    [self.scrollView setNeedsLayout];
+//    
+//    [UIView commitAnimations];
+//}
 
 @end

@@ -8,6 +8,8 @@
 
 #import "AppStorage.h"
 
+NSString *CURRENT_USER_UUID_KEY = @"CURRENT_USER_UUID_KEY";
+
 @implementation AppStorage
 
 #pragma mark -
@@ -23,25 +25,21 @@
     return instance;
 }
 
-#pragma mark -
-#pragma mark Life Circle
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)saveUserUUID:(NSString *)userUUID
 {
-    
+    [[NSUserDefaults standardUserDefaults] setObject:userUUID
+                                              forKey:CURRENT_USER_UUID_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)userUUID
 {
-    return nil;
+    return [[NSUserDefaults standardUserDefaults] stringForKey:CURRENT_USER_UUID_KEY];
 }
 
-
-
-#pragma mark -
-#pragma mark Helper Methods
 
 @end
