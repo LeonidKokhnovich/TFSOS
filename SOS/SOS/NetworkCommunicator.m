@@ -302,7 +302,7 @@ NSString *RETRIEVE_SOS_SESSION_INFO_REQUEST_LABEL = @"retrieve SOS session info"
 
 - (NSString *)messageForRequestWithLabel:(NSString *)title URLRequest:(NSURLRequest *)URLRequest
 {
-    return [NSString stringWithFormat:@"Start %@ task\nurl request: %@", title, URLRequest];
+    return [NSString stringWithFormat:@"Start %@ task\nurl request: %@\nHTTP header: %@\nHTTP body: %@", title, URLRequest, URLRequest.allHTTPHeaderFields, [[NSString alloc] initWithData:URLRequest.HTTPBody encoding:NSUTF8StringEncoding]];
 }
 
 - (NSString *)messageForCompletedDataTaskWithLabel:(NSString *)title data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error
