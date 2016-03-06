@@ -10,7 +10,7 @@
 #import "SOSMaster.h"
 #import "ModelValidator.h"
 
-@interface SOSViewController () <SOSMasterDelegate>
+@interface SOSViewController () <SOSMasterDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *activateSOSContainerView;
 @property (weak, nonatomic) IBOutlet UIView *deactivateSOSContainerView;
@@ -84,6 +84,8 @@
 
 - (void)cancelSOS
 {
+    [self.secretCodeTextField resignFirstResponder];
+    
     NSString *secretCode = self.secretCodeTextField.text;
     
     if ([ModelValidator validateSecretCode:secretCode
@@ -100,6 +102,14 @@
 
 #pragma mark -
 #pragma mark Delegate Methods
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self cancelSOS];
+    return YES;
+}
 
 #pragma mark SOSMasterDelegate
 

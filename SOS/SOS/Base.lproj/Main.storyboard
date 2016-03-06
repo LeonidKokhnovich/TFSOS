@@ -342,7 +342,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="puS-NK-MBT"/>
+                                            <outlet property="delegate" destination="g7k-sV-7bX" id="IPS-kn-ndS"/>
                                         </connections>
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterButton" translatesAutoresizingMaskIntoConstraints="NO" id="pPw-pT-28F" userLabel="Cancel SOS Alarm Button">
