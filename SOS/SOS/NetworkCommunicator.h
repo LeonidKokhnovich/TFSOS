@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
                                completionBlock:(void (^)(NSString *SOSUUID, NSError *error))completionBlock;
 - (void)performUpdateForSOS:(SOSModel *)SOS
             completionBlock:(void (^)(NSError *error))completionBlock;
+- (void)performSOSStatusUpdate:(SOS_STATUS)SOSStatus
+                       SOSUUID:(NSString *)SOSUUID
+               completionBlock:(void (^)(NSError *error))completionBlock;
 
 @end
 

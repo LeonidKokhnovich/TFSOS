@@ -139,6 +139,20 @@
     [self updateUI];
 }
 
+- (void)master:(SOSMaster *)master didFailToStopSOSWithError:(NSError *)error
+{
+    NSLog(@"Did fail to stop SOS with error %@.", error);
+    
+    [self showAlertWithTitle:TextStringWarning
+                     message:TextStringFailedToStopSOS];
+    [self updateUI];
+}
+
+- (void)masterDidStopSOS:(SOSMaster *)master
+{
+    [self updateUI];
+}
+
 #pragma mark -
 #pragma mark Notifications Handling Methods
 

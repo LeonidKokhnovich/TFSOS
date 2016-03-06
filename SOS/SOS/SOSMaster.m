@@ -17,6 +17,7 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
 @interface SOSMaster () <CLLocationManagerDelegate>
 
 @property (nonatomic) BOOL activating;
+@property (nonatomic) BOOL deactivating;
 @property (nonatomic) CLLocationManager *locationManager;
 @property (copy, nonatomic) RequestLocationPermissionCompletionBlock requestLocationPermissionCompletionBlock;
 @property (nonatomic) NSString *SOSUUID;
@@ -114,8 +115,33 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
 {
     NSLog(@"Stop SOS");
     
-    self.SOSUUID = nil;
-    [self.locationManager stopUpdatingLocation];
+    self.deactivating = YES;
+    
+    weakify(self);
+    [[NetworkCommunicator sharedInstance] performSOSStatusUpdate:SOS_STATUS_CANCELLED
+                                                         SOSUUID:self.SOSUUID
+                                                 completionBlock:^(NSError * _Nonnull error)
+     {
+         strongify(self);
+         
+         self.deactivating = NO;
+         
+         if (error == nil) {
+             self.SOSUUID = nil;
+             [self.locationManager stopUpdatingLocation];
+             
+             if ([self.delegate respondsToSelector:@selector(masterDidStopSOS:)]) {
+                 dispatch_async(self.callbacksQueue, ^{
+                     [self.delegate masterDidStopSOS:self];
+                 });
+             }
+         }
+         else if ([self.delegate respondsToSelector:@selector(master:didFailToStopSOSWithError:)]) {
+             dispatch_async(self.callbacksQueue, ^{
+                 [self.delegate master:self didFailToStopSOSWithError:error];
+             });
+         }
+     }];
 }
 
 #pragma mark -

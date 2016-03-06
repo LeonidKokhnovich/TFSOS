@@ -106,11 +106,11 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
 - (void)registerUser
 {
-#ifdef TEST_SIGN_UP
-    UserInfoModel *userInfo = [self createTestUserInfoModel];
-#else
+    //#ifdef TEST_SIGN_UP
+    //    UserInfoModel *userInfo = [self createTestUserInfoModel];
+    //#else
     UserInfoModel *userInfo = [self createUserInfoModel];
-#endif
+    //#endif
     
     if ([ModelValidator validateUserInfoModel:userInfo]) {
         // Update UI.
@@ -127,12 +127,12 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
              
              self.activityOverlay.hidden = YES;
              
-#ifdef TEST_SIGN_UP
-             if (/* DISABLES CODE */ (YES)) {
-                 userUUID = [NSString stringWithFormat:@"%zd", arc4random()];
-#else
+             //#ifdef TEST_SIGN_UP
+             //             if (/* DISABLES CODE */ (YES)) {
+             //                 userUUID = [NSString stringWithFormat:@"%zd", arc4random()];
+             //#else
              if (userUUID) {
-#endif
+                 //#endif
                  [[AppStorage sharedInstance] saveUserUUID:userUUID];
                  
                  NSString *secretCodeHash = [userInfo.secretCode.lowercaseString MD5String];

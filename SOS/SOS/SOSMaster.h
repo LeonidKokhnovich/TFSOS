@@ -13,6 +13,7 @@
 @interface SOSMaster : NSObject <UserSessionObligatorily>
 
 @property (nonatomic, readonly) BOOL activating;
+@property (nonatomic, readonly) BOOL deactivating;
 @property (nonatomic, readonly) BOOL active;
 @property (weak, nonatomic) id <SOSMasterDelegate> delegate;
 @property (nonatomic) dispatch_queue_t callbacksQueue;
@@ -28,5 +29,7 @@
 - (void)masterDidStartSOS:(SOSMaster *)master;
 - (void)master:(SOSMaster *)master didFailToStartSOSWithError:(NSError *)error;
 - (void)master:(SOSMaster *)master didFailToDeliverSOSWithError:(NSError *)error;
+- (void)master:(SOSMaster *)master didFailToStopSOSWithError:(NSError *)error;
+- (void)masterDidStopSOS:(SOSMaster *)master;
 
 @end

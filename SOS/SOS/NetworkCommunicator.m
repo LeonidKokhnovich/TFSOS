@@ -182,6 +182,47 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
     }
 }
 
+- (void)performSOSStatusUpdate:(SOS_STATUS)SOSStatus
+                       SOSUUID:(NSString *)SOSUUID
+               completionBlock:(void (^)(NSError *error))completionBlock
+{
+    NSDictionary *attributes = @{SOS_UUID_KEY: SOSUUID,
+                                 SOS_STATUS_KEY: @(SOSStatus)};
+    
+    NSLog(@"Perform update SOS session status with attributes: %@", attributes);
+    
+    NSError *error;
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
+                                                      options:0
+                                                        error:&error];
+    
+    if (payload) {
+        NSString *URLString = [NSString stringWithFormat:@"%@%@",
+                               SOS_WEB_SERVER_BASE_URL,
+                               SOS_WEB_SERVER_PATH_SOS_STATUS];
+        
+        NSURL *URL = [NSURL URLWithString:URLString];
+        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
+        URLRequest.HTTPMethod = @"POST";
+        URLRequest.HTTPBody = payload;
+        
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                      
+                                      {
+                                          NSLog(@"Did finish update SOS session status with response: %@, data: %@, error: %@", response, data, error);
+                                          
+                                          if (completionBlock) {
+                                              completionBlock(error);
+                                          }
+                                      }];
+        [task resume];
+    }
+    else if (completionBlock) {
+        completionBlock(error);
+    }
+}
+
 
 #pragma mark -
 #pragma mark Accessories
