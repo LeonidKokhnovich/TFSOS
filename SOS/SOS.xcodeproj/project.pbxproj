@@ -18,6 +18,8 @@
 		8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69B1C8B732D00287DC1 /* SOSModel.m */; };
 		8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69E1C8B733A00287DC1 /* UserInfoModel.m */; };
 		8402C6A31C8B73F000287DC1 /* AppStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6A21C8B73F000287DC1 /* AppStorage.m */; };
+		8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6B31C8B852C00287DC1 /* ModelValidator.m */; };
+		8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,14 @@
 		8402C6A21C8B73F000287DC1 /* AppStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStorage.m; sourceTree = "<group>"; };
 		8402C6A51C8B740C00287DC1 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		8402C6B01C8B744000287DC1 /* SOSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOSPrefixHeader.pch; sourceTree = "<group>"; };
+		8402C6B21C8B852C00287DC1 /* ModelValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelValidator.h; sourceTree = "<group>"; };
+		8402C6B31C8B852C00287DC1 /* ModelValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelValidator.m; sourceTree = "<group>"; };
+		8402C6B51C8B85E800287DC1 /* Serializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serializable.h; sourceTree = "<group>"; };
+		8402C6B81C8B899600287DC1 /* TextStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextStrings.h; sourceTree = "<group>"; };
+		8402C6BA1C8B8A1B00287DC1 /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
+		8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
+		8402C6BD1C8B8C2400287DC1 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		8402C6C11C8BA6FD00287DC1 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,9 @@
 		8402C6761C8B725500287DC1 /* SOS */ = {
 			isa = PBXGroup;
 			children = (
+				8402C6B91C8B89F300287DC1 /* Categories */,
+				8402C6B71C8B898B00287DC1 /* Headers */,
+				8402C6B11C8B84FE00287DC1 /* Core */,
 				8402C6A41C8B73F300287DC1 /* Protocols */,
 				8402C6A01C8B736600287DC1 /* Helpers */,
 				8402C6991C8B731A00287DC1 /* Model */,
@@ -144,8 +157,37 @@
 			isa = PBXGroup;
 			children = (
 				8402C6A51C8B740C00287DC1 /* Singleton.h */,
+				8402C6B51C8B85E800287DC1 /* Serializable.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		8402C6B11C8B84FE00287DC1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8402C6B21C8B852C00287DC1 /* ModelValidator.h */,
+				8402C6B31C8B852C00287DC1 /* ModelValidator.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		8402C6B71C8B898B00287DC1 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				8402C6B81C8B899600287DC1 /* TextStrings.h */,
+				8402C6BD1C8B8C2400287DC1 /* Config.h */,
+				8402C6C11C8BA6FD00287DC1 /* Helpers.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		8402C6B91C8B89F300287DC1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8402C6BA1C8B8A1B00287DC1 /* UIViewController+Helpers.h */,
+				8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +262,11 @@
 			files = (
 				8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */,
 				8402C67C1C8B725500287DC1 /* AppDelegate.m in Sources */,
+				8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */,
 				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
 				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
 				8402C6791C8B725500287DC1 /* main.m in Sources */,
+				8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */,
 				8402C6A31C8B73F000287DC1 /* AppStorage.m in Sources */,
 				8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */,
 				8402C6981C8B730700287DC1 /* NetworkCommunicator.m in Sources */,

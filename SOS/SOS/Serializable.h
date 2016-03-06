@@ -1,5 +1,5 @@
 //
-//  SOSModel.h
+//  Serializable.h
 //  SOS
 //
 //  Created by Leonid Kokhnovych on 2016-03-05.
@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SOSModel : NSObject <Serializable>
+@protocol Serializable <NSObject>
+
+- (NSDictionary *)toDictionary;
 
 @end
 

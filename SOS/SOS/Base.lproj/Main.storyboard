@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="trailing" secondItem="RFI-mu-YZZ" secondAttribute="trailing" constant="20" id="zKW-Cs-zrh"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUb-cT-Yvt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUb-cT-Yvt">
                                 <rect key="frame" x="0.0" y="64" width="600" height="736"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmA-eC-hQA">
@@ -51,11 +51,17 @@
                                         <rect key="frame" x="10" y="52" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="mMZ-Lh-c3b"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sea-p8-tY3">
                                         <rect key="frame" x="10" y="123" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="I1a-KS-DFd"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BId-fY-gAi">
                                         <rect key="frame" x="20" y="98" width="154.5" height="17"/>
@@ -67,6 +73,9 @@
                                         <rect key="frame" x="10" y="194" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="kV3-DS-5Qf"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DATE OF BIRTH (YYYYMMDD)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-fE-bxF">
                                         <rect key="frame" x="20" y="169" width="154.5" height="17"/>
@@ -78,6 +87,9 @@
                                         <rect key="frame" x="10" y="265" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="m4x-Vv-Jb2"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HOME ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pme-4V-6iZ">
                                         <rect key="frame" x="20" y="240" width="154.5" height="17"/>
@@ -89,6 +101,9 @@
                                         <rect key="frame" x="10" y="336" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="wgx-Qz-bDu"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-ev-1vJ">
                                         <rect key="frame" x="20" y="311" width="154.5" height="17"/>
@@ -100,6 +115,9 @@
                                         <rect key="frame" x="10" y="407" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="wj8-fB-8YA"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMERGENCY CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uo-0u-Yrx">
                                         <rect key="frame" x="20" y="382" width="154.5" height="17"/>
@@ -111,6 +129,9 @@
                                         <rect key="frame" x="10" y="478" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="HYu-jX-30v"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMERGENCY NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72Q-QH-H0b">
                                         <rect key="frame" x="20" y="453" width="154.5" height="17"/>
@@ -122,6 +143,9 @@
                                         <rect key="frame" x="10" y="549" width="174.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="HDy-tl-FSz"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SECRET WORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIP-3k-FkQ">
                                         <rect key="frame" x="20" y="524" width="172.5" height="17"/>
@@ -141,7 +165,7 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt8-Jv-dmI">
-                                        <rect key="frame" x="268.5" y="609.5" width="63.5" height="20.5"/>
+                                        <rect key="frame" x="268" y="609" width="63.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -210,21 +234,39 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezq-Ff-gca">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Qak-ph-WlW">
+                                        <rect key="frame" x="290" y="390" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Qak-ph-WlW" firstAttribute="centerY" secondItem="Ezq-Ff-gca" secondAttribute="centerY" id="Zq5-0X-lJh"/>
+                                    <constraint firstItem="Qak-ph-WlW" firstAttribute="centerX" secondItem="Ezq-Ff-gca" secondAttribute="centerX" id="ugf-tC-Mdn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nZN-Cp-oIC" secondAttribute="trailing" id="7EH-hm-NnO"/>
+                            <constraint firstAttribute="trailing" secondItem="Ezq-Ff-gca" secondAttribute="trailing" id="7TT-tI-7zr"/>
                             <constraint firstItem="nZN-Cp-oIC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YhD-5U-Ft8"/>
                             <constraint firstAttribute="trailing" secondItem="fUb-cT-Yvt" secondAttribute="trailing" id="cjh-uX-QBL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fUb-cT-Yvt" secondAttribute="bottom" id="dgr-zN-Vhh"/>
                             <constraint firstItem="fUb-cT-Yvt" firstAttribute="top" secondItem="nZN-Cp-oIC" secondAttribute="bottom" id="i9x-u4-H7s"/>
                             <constraint firstItem="nZN-Cp-oIC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ji0-Aa-ck6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ezq-Ff-gca" secondAttribute="bottom" id="mAi-ZW-YRO"/>
+                            <constraint firstItem="Ezq-Ff-gca" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ndz-Nq-oL4"/>
                             <constraint firstItem="fUb-cT-Yvt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uI8-tL-0Vm"/>
+                            <constraint firstItem="Ezq-Ff-gca" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xvi-QY-kUB"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="activityOverlay" destination="Ezq-Ff-gca" id="IdR-Iw-xGi"/>
                         <outlet property="birthDateTextField" destination="gke-q4-ocr" id="X4l-Dl-bMa"/>
                         <outlet property="emergencyContactTextField" destination="mTN-RD-Fj3" id="lVN-kv-OJe"/>
                         <outlet property="emergencyNumberTextField" destination="5m6-a9-6eR" id="yPh-rK-Eai"/>
@@ -235,6 +277,7 @@
                         <outlet property="scrollView" destination="fUb-cT-Yvt" id="P9M-HR-jLZ"/>
                         <outlet property="scrollViewBottomLayoutConstraint" destination="dgr-zN-Vhh" id="6xR-n7-U6M"/>
                         <outlet property="secretCodeTextField" destination="QcS-sV-Tpr" id="jNx-3v-esW"/>
+                        <segue destination="g7k-sV-7bX" kind="show" identifier="Show SOS" id="aNK-dh-m8x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -255,14 +298,14 @@
                         <viewControllerLayoutGuide type="bottom" id="xvn-AI-20P"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VVi-1l-buZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfy-E5-F5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511" y="403"/>
+            <point key="canvasLocation" x="512" y="403"/>
         </scene>
     </scenes>
     <resources>

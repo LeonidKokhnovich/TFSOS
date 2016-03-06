@@ -1,5 +1,5 @@
 //
-//  SOSModel.h
+//  ModelValidator.h
 //  SOS
 //
 //  Created by Leonid Kokhnovych on 2016-03-05.
@@ -10,7 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SOSModel : NSObject <Serializable>
+@class UserInfoModel;
+@class SOSModel;
+
+@interface ModelValidator : NSObject
+
++ (BOOL)validateUserInfoModel:(UserInfoModel *)model;
 
 @end
 

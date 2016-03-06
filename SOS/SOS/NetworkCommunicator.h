@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkCommunicator : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@class UserInfoModel;
+
+@interface NetworkCommunicator : NSObject <Singleton>
+
+- (void)performRegisterUserRequestWithUserInfo:(UserInfoModel *)userInfo
+                               completionBlock:(void (^)(NSString *userUUID, NSError *error))completionBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

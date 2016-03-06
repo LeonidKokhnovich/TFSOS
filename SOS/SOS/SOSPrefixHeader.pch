@@ -10,5 +10,10 @@
 #define SOSPrefixHeader_pch
 
 #import "Singleton.h"
+#import "Serializable.h"
+#import "TextStrings.h"
+#import "UIViewController+Helpers.h"
+#import "Config.h"
+#import "Helpers.h"
 
 #endif /* SOSPrefixHeader_pch */
