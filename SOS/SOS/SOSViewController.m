@@ -165,7 +165,7 @@ typedef NS_ENUM(NSUInteger, PATH_BUTTON_TYPE) {
     dcPathButton.dcButtonCenter = CGPointMake(10 + dcPathButton.frame.size.width/2,
                                               self.view.frame.size.height - dcPathButton.frame.size.height/2 - 10);
     
-    [self.deactivateSOSContainerView addSubview:dcPathButton];
+//    [self.deactivateSOSContainerView addSubview:dcPathButton];
 }
 
 - (void)cancelSOS
