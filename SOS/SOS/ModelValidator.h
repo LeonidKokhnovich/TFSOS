@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)validateSOSModel:(SOSModel *)model;
 + (BOOL)validateSecretCode:(NSString *)secretCode
                forUserUUID:(NSString *)userUUID;
++ (BOOL)validateName:(NSString *)input;
++ (BOOL)validateBirthDate:(NSNumber *)birthDateNumber;
++ (BOOL)validatePhoneNumber:(NSString *)phoneNumber;
 
 @end
 

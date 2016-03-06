@@ -25,6 +25,7 @@
 		84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */; };
 		84CDFE4A1C8C92570048816C /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE491C8C92570048816C /* UIView+Helpers.m */; };
 		84CDFE621C8CBF8C0048816C /* SOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE611C8CBF8C0048816C /* SOSTests.m */; };
+		84CDFE6A1C8CC0320048816C /* ModelValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE691C8CC0320048816C /* ModelValidatorTests.m */; };
 		ABE1F4DF1B9A6440BE1EA38E /* libPods-SOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		84CDFE5F1C8CBF8C0048816C /* SOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CDFE611C8CBF8C0048816C /* SOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOSTests.m; sourceTree = "<group>"; };
 		84CDFE631C8CBF8C0048816C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84CDFE691C8CC0320048816C /* ModelValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelValidatorTests.m; sourceTree = "<group>"; };
 		C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67016D55B582660EACC647D /* Pods-SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS/Pods-SOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,6 +261,7 @@
 			children = (
 				84CDFE611C8CBF8C0048816C /* SOSTests.m */,
 				84CDFE631C8CBF8C0048816C /* Info.plist */,
+				84CDFE691C8CC0320048816C /* ModelValidatorTests.m */,
 			);
 			path = SOSTests;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CDFE6A1C8CC0320048816C /* ModelValidatorTests.m in Sources */,
 				84CDFE621C8CBF8C0048816C /* SOSTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

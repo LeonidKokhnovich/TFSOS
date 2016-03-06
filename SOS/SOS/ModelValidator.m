@@ -42,7 +42,7 @@
     BOOL returnValue = NO;
     
     if (input) {
-        NSString *regex = @"/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u";
+        NSString *regex = @"^[A-Za-z ,.'-]+$";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
         returnValue = [predicate evaluateWithObject:input];
     }
@@ -74,7 +74,7 @@
     BOOL returnValue = NO;
     
     if (phoneNumber) {
-        NSString *phoneRegex = @"^((\\+)|(00))[0-9]{6,14}$";
+        NSString *phoneRegex = @"^([0-9]{3}.){2}[0-9]{4}$";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
         returnValue = [predicate evaluateWithObject:phoneNumber];
     }
