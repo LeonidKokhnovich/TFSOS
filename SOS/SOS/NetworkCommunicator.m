@@ -215,9 +215,11 @@ NSString *RETRIEVE_SOS_SESSION_INFO_REQUEST_LABEL = @"retrieve SOS session info"
                                                         error:&error];
     
     if (payload) {
-        NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@",
                                SOS_WEB_SERVER_BASE_URL,
-                               SOS_WEB_SERVER_PATH_SOS_STATUS];
+                               SOS_WEB_SERVER_PATH_SOS,
+                               SOSUUID,
+                               SOS_WEB_SERVER_PATH_STATUS];
         
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
