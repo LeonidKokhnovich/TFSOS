@@ -106,11 +106,11 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
 - (void)registerUser
 {
-    //#ifdef TEST_SIGN_UP
-    //    UserInfoModel *userInfo = [self createTestUserInfoModel];
-    //#else
+#ifdef TEST_SIGN_UP
+    UserInfoModel *userInfo = [self createTestUserInfoModel];
+#else
     UserInfoModel *userInfo = [self createUserInfoModel];
-    //#endif
+#endif
     
     if ([ModelValidator validateUserInfoModel:userInfo]) {
         // Update UI.
@@ -123,30 +123,35 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
          {
              strongify(self);
              
-             // Update UI.
+             __block NSString *blockedUserUUID = userUUID;
              
-             self.activityOverlay.hidden = YES;
-             
-             //#ifdef TEST_SIGN_UP
-             //             if (/* DISABLES CODE */ (YES)) {
-             //                 userUUID = [NSString stringWithFormat:@"%zd", arc4random()];
-             //#else
-             if (userUUID) {
-                 //#endif
-                 [[AppStorage sharedInstance] saveUserUUID:userUUID];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 // Update UI.
                  
-                 NSString *secretCodeHash = [userInfo.secretCode.lowercaseString MD5String];
-                 [[AppStorage sharedInstance] saveSecretCodeHash:secretCodeHash
-                                                     forUserUUID:userUUID];
+                 self.activityOverlay.hidden = YES;
                  
-                 // Attempt to autorize the user with the new UUID.
-                 
-                 [self authorizeUser];
-             }
-             else {
-                 [self showAlertWithTitle:TextStringWarning
-                                  message:TextStringNetworkRequestFailed];
-             }
+#ifdef TEST_SIGN_UP
+                 if (/* DISABLES CODE */ (YES)) {
+                     blockedUserUUID = [NSString stringWithFormat:@"%zd", arc4random()];
+#else
+                     if (blockUserUUID) {
+#endif
+                         [[AppStorage sharedInstance] saveUserUUID:blockedUserUUID];
+                         
+                         NSString *secretCodeHash = [userInfo.secretCode.lowercaseString MD5String];
+                         [[AppStorage sharedInstance] saveSecretCodeHash:secretCodeHash
+                                                             forUserUUID:blockedUserUUID];
+                         
+                         // Attempt to autorize the user with the new UUID.
+                         
+                         [self authorizeUser];
+                     }
+                     else {
+                         [self showAlertWithTitle:TextStringWarning
+                                          message:TextStringNetworkRequestFailed];
+                     }
+
+             });
          }];
     }
     else {
