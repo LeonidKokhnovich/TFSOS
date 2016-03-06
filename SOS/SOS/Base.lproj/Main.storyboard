@@ -312,6 +312,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-Ib-mB5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, please click me if you need assistance! The security will contact you shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-Kc-dzu">
+                                        <rect key="frame" x="32" y="101" width="536" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOSButton" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-9K-ett">
                                         <rect key="frame" x="152" y="253" width="295" height="295"/>
                                         <gestureRecognizers/>
@@ -328,6 +334,11 @@
                                 <constraints>
                                     <constraint firstItem="lAU-9K-ett" firstAttribute="centerY" secondItem="eQJ-Ib-mB5" secondAttribute="centerY" id="0br-6E-El0"/>
                                     <constraint firstItem="lAU-9K-ett" firstAttribute="centerX" secondItem="eQJ-Ib-mB5" secondAttribute="centerX" id="0cE-zN-cFe"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wd6-Kc-dzu" secondAttribute="trailing" constant="32" id="669-yV-q1n"/>
+                                    <constraint firstItem="lAU-9K-ett" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Wd6-Kc-dzu" secondAttribute="bottom" constant="8" id="QbZ-5a-8Jh"/>
+                                    <constraint firstItem="Wd6-Kc-dzu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eQJ-Ib-mB5" secondAttribute="top" constant="8" id="Szh-GV-9bt"/>
+                                    <constraint firstItem="Wd6-Kc-dzu" firstAttribute="leading" secondItem="eQJ-Ib-mB5" secondAttribute="leading" constant="32" id="edw-CN-HM1"/>
+                                    <constraint firstItem="Wd6-Kc-dzu" firstAttribute="top" secondItem="eQJ-Ib-mB5" secondAttribute="top" priority="250" constant="101" id="uRT-Qk-kng"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImP-ZN-JEK">
