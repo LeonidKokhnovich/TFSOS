@@ -23,6 +23,12 @@
 		8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */; };
 		84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9967E1C8BB574008790BC /* SOSMaster.m */; };
 		84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */; };
+		84CDFE4A1C8C92570048816C /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE491C8C92570048816C /* UIView+Helpers.m */; };
+		84CDFE511C8C9EAA0048816C /* DCPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE4E1C8C9EAA0048816C /* DCPathButton.m */; };
+		84CDFE521C8C9EAA0048816C /* DCPathItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE501C8C9EAA0048816C /* DCPathItemButton.m */; };
+		84CDFE581C8C9FFB0048816C /* bloom.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84CDFE551C8C9FFB0048816C /* bloom.caf */; };
+		84CDFE591C8C9FFB0048816C /* fold.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84CDFE561C8C9FFB0048816C /* fold.caf */; };
+		84CDFE5A1C8C9FFB0048816C /* selected.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84CDFE571C8C9FFB0048816C /* selected.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +71,15 @@
 		84B996891C8BDE6C008790BC /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
 		84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
 		84B9968C1C8BF0CB008790BC /* NetworkingMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingMisc.h; sourceTree = "<group>"; };
+		84CDFE481C8C92570048816C /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		84CDFE491C8C92570048816C /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		84CDFE4D1C8C9EAA0048816C /* DCPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPathButton.h; sourceTree = "<group>"; };
+		84CDFE4E1C8C9EAA0048816C /* DCPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPathButton.m; sourceTree = "<group>"; };
+		84CDFE4F1C8C9EAA0048816C /* DCPathItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPathItemButton.h; sourceTree = "<group>"; };
+		84CDFE501C8C9EAA0048816C /* DCPathItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPathItemButton.m; sourceTree = "<group>"; };
+		84CDFE551C8C9FFB0048816C /* bloom.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bloom.caf; sourceTree = "<group>"; };
+		84CDFE561C8C9FFB0048816C /* fold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fold.caf; sourceTree = "<group>"; };
+		84CDFE571C8C9FFB0048816C /* selected.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = selected.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +112,8 @@
 		8402C6761C8B725500287DC1 /* SOS */ = {
 			isa = PBXGroup;
 			children = (
+				84CDFE531C8C9FEC0048816C /* Resources */,
+				84CDFE4B1C8C9E890048816C /* Views */,
 				8402C6B91C8B89F300287DC1 /* Categories */,
 				8402C6B71C8B898B00287DC1 /* Headers */,
 				8402C6B11C8B84FE00287DC1 /* Core */,
@@ -207,8 +224,47 @@
 				8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */,
 				84B996891C8BDE6C008790BC /* NSString+Helpers.h */,
 				84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */,
+				84CDFE481C8C92570048816C /* UIView+Helpers.h */,
+				84CDFE491C8C92570048816C /* UIView+Helpers.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		84CDFE4B1C8C9E890048816C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84CDFE4C1C8C9E9D0048816C /* DCPathButton */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		84CDFE4C1C8C9E9D0048816C /* DCPathButton */ = {
+			isa = PBXGroup;
+			children = (
+				84CDFE4D1C8C9EAA0048816C /* DCPathButton.h */,
+				84CDFE4E1C8C9EAA0048816C /* DCPathButton.m */,
+				84CDFE4F1C8C9EAA0048816C /* DCPathItemButton.h */,
+				84CDFE501C8C9EAA0048816C /* DCPathItemButton.m */,
+			);
+			name = DCPathButton;
+			sourceTree = "<group>";
+		};
+		84CDFE531C8C9FEC0048816C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84CDFE541C8C9FF30048816C /* Sounds */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		84CDFE541C8C9FF30048816C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				84CDFE551C8C9FFB0048816C /* bloom.caf */,
+				84CDFE561C8C9FFB0048816C /* fold.caf */,
+				84CDFE571C8C9FFB0048816C /* selected.caf */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +325,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8402C6871C8B725500287DC1 /* LaunchScreen.storyboard in Resources */,
+				84CDFE5A1C8C9FFB0048816C /* selected.caf in Resources */,
 				8402C6841C8B725500287DC1 /* Assets.xcassets in Resources */,
+				84CDFE581C8C9FFB0048816C /* bloom.caf in Resources */,
+				84CDFE591C8C9FFB0048816C /* fold.caf in Resources */,
 				8402C6821C8B725500287DC1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,13 +343,16 @@
 				8402C6941C8B72E500287DC1 /* SOSViewController.m in Sources */,
 				8402C67C1C8B725500287DC1 /* AppDelegate.m in Sources */,
 				8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */,
+				84CDFE511C8C9EAA0048816C /* DCPathButton.m in Sources */,
 				8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */,
+				84CDFE4A1C8C92570048816C /* UIView+Helpers.m in Sources */,
 				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
 				84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */,
 				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
 				8402C6791C8B725500287DC1 /* main.m in Sources */,
 				84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */,
 				8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */,
+				84CDFE521C8C9EAA0048816C /* DCPathItemButton.m in Sources */,
 				8402C6A31C8B73F000287DC1 /* AppStorage.m in Sources */,
 				8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */,
 				8402C6981C8B730700287DC1 /* NetworkCommunicator.m in Sources */,

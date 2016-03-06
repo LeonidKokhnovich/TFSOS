@@ -16,6 +16,7 @@
 #import "UIViewController+Helpers.h"
 #import "NSData+Helpers.h"
 #import "NSString+Helpers.h"
+#import "UIView+Helpers.h"
 #import "Config.h"
 #import "Helpers.h"
 #import "SOSMisc.h"
