@@ -8,6 +8,7 @@
 
 #import "SOSViewController.h"
 #import "SOSMaster.h"
+#import "ModelValidator.h"
 
 @interface SOSViewController () <SOSMasterDelegate>
 
@@ -45,10 +46,17 @@
 
 - (IBAction)onSOSTapped:(id)sender
 {
-    NSLog(@"SOS tapped");
+    NSLog(@"SOS tapped.");
     
     [self.master startSOS];
     [self updateUI];
+}
+
+- (IBAction)cancelSOSTapped:(id)sender
+{
+    NSLog(@"Cancel SOS tapped.");
+    
+    [self cancelSOS];
 }
 
 #pragma mark -
@@ -72,6 +80,22 @@
     self.master = [[SOSMaster alloc] init];
     self.master.delegate = self;
     self.master.userUUID = self.userUUID;
+}
+
+- (void)cancelSOS
+{
+    NSString *secretCode = self.secretCodeTextField.text;
+    
+    if ([ModelValidator validateSecretCode:secretCode
+                               forUserUUID:self.userUUID]) {
+        [self.master stopSOS];
+    }
+    else {
+        [self showAlertWithTitle:TextStringWarning
+                         message:TextStringIncorrectSecretCode];
+    }
+    
+    [self updateUI];
 }
 
 #pragma mark -

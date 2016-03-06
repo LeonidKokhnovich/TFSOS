@@ -14,5 +14,6 @@
 #define TextStringInputIsNotValid NSLocalizedString(@"Please, check if the input is valid", nil)
 #define TextStringNetworkRequestFailed NSLocalizedString(@"Network request failed. Please, try again.", nil)
 #define TextStringFailedToPerformSOS NSLocalizedString(@"Did fail to perform SOS. Please, try again.", nil)
+#define TextStringIncorrectSecretCode NSLocalizedString(@"Your secret code doesn't match the one that you specified while registration.", nil)
 
 #endif /* TextStrings_h */

@@ -9,8 +9,13 @@
 #import "ModelValidator.h"
 #import "SOSModel.h"
 #import "UserInfoModel.h"
+#import "AppStorage.h"
 
 @implementation ModelValidator
+
+
+#pragma mark -
+#pragma mark Public Methods
 
 + (BOOL)validateUserInfoModel:(UserInfoModel *)model
 {
@@ -45,6 +50,25 @@
     
     return returnValue;
 }
+
++ (BOOL)validateSecretCode:(NSString *)secretCode
+               forUserUUID:(NSString *)userUUID
+{
+    BOOL returnValue = NO;
+    
+    NSString *secretCodeHash = [secretCode.lowercaseString MD5String];
+    NSString *secretCodeHashSample = [[AppStorage sharedInstance] secretCodeHashForUserUUID:userUUID];
+    
+    if ([secretCodeHash isEqualToString:secretCodeHashSample]) {
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
+
+#pragma mark -
+#pragma mark Helper Methods
 
 + (BOOL)validateBasicStringParameter:(NSString *)parameter
 {

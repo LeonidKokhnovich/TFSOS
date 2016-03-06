@@ -135,6 +135,10 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 #endif
                  [[AppStorage sharedInstance] saveUserUUID:userUUID];
                  
+                 NSString *secretCodeHash = [userInfo.secretCode.lowercaseString MD5String];
+                 [[AppStorage sharedInstance] saveSecretCodeHash:secretCodeHash
+                                                     forUserUUID:userUUID];
+                 
                  // Attempt to autorize the user with the new UUID.
                  
                  [self authorizeUser];
@@ -175,7 +179,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     returnModel.phoneNumber = [self randomString];
     returnModel.emergencyContact = [self randomString];
     returnModel.emergencyNumber = [self randomString];
-    returnModel.secretCode = [self randomString];
+    returnModel.secretCode = @"123";//[self randomString];
     return returnModel;
 }
 

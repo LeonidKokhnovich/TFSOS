@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)saveUserUUID:(NSString * _Nullable)userUUID;
 - (NSString * _Nullable)userUUID;
+- (void)saveSecretCodeHash:(NSString *)secretCodeHash
+               forUserUUID:(NSString *)userUUID;
+- (NSString * _Nullable)secretCodeHashForUserUUID:(NSString *)userUUID;
 
 @end
 

@@ -22,6 +22,7 @@
 		8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */; };
 		8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */; };
 		84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9967E1C8BB574008790BC /* SOSMaster.m */; };
+		84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		84B9967D1C8BB574008790BC /* SOSMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSMaster.h; sourceTree = "<group>"; };
 		84B9967E1C8BB574008790BC /* SOSMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSMaster.m; sourceTree = "<group>"; };
 		84B996801C8BB976008790BC /* SOSMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOSMisc.h; sourceTree = "<group>"; };
+		84B996891C8BDE6C008790BC /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
+		84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,8 @@
 				8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */,
 				8402C6C21C8BABC000287DC1 /* NSData+Helpers.h */,
 				8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */,
+				84B996891C8BDE6C008790BC /* NSString+Helpers.h */,
+				84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */,
 				8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */,
 				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
+				84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */,
 				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
 				8402C6791C8B725500287DC1 /* main.m in Sources */,
 				84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */,
