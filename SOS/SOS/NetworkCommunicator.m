@@ -57,8 +57,8 @@ NSString *USER_UUID_KEY = @"user_uuid";
         URLRequest.HTTPMethod = @"POST";
         URLRequest.HTTPBody = payload;
         
-        [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
-                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
          {
              NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
              NSString *userUUID;
@@ -78,6 +78,7 @@ NSString *USER_UUID_KEY = @"user_uuid";
                  completionBlock(userUUID, error);
              }
          }];
+        [task resume];
     }
     else if (completionBlock) {
         completionBlock(nil, error);

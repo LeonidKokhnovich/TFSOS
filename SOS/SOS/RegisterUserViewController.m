@@ -99,7 +99,11 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
 - (void)registerUser
 {
-    UserInfoModel *userInfo = [self createUserInfoModelBasedOnUI];
+#ifdef TEST_SIGN_UP
+    UserInfoModel *userInfo = [self createTestUserInfoModel];
+#else
+    UserInfoModel *userInfo = [self createUserInfoModel];
+#endif
     
     if ([ModelValidator validateUserInfoModel:userInfo]) {
         // Update UI.
@@ -116,7 +120,12 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
              
              self.activityOverlay.hidden = YES;
              
+#ifdef TEST_SIGN_UP
+             if (/* DISABLES CODE */ (YES)) {
+                 userUUID = [NSString stringWithFormat:@"%zd", arc4random()];
+#else
              if (userUUID) {
+#endif
                  [[AppStorage sharedInstance] saveUserUUID:userUUID];
                  
                  // Attempt to autorize the user with the new UUID.
@@ -135,7 +144,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     }
 }
 
-- (UserInfoModel * _Nonnull)createUserInfoModelBasedOnUI
+- (UserInfoModel * _Nonnull)createUserInfoModel
 {
     UserInfoModel *returnModel = [UserInfoModel new];
     returnModel.firstName = self.firstNameTextField.text;
@@ -147,6 +156,25 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     returnModel.emergencyNumber = self.emergencyNumberTextField.text;
     returnModel.secretCode = self.secretCodeTextField.text;
     return returnModel;
+}
+
+- (UserInfoModel * _Nonnull)createTestUserInfoModel
+{
+    UserInfoModel *returnModel = [UserInfoModel new];
+    returnModel.firstName = [self randomString];
+    returnModel.lastName = [self randomString];
+    returnModel.birthDate = [self randomString];
+    returnModel.homeAddress = [self randomString];
+    returnModel.phoneNumber = [self randomString];
+    returnModel.emergencyContact = [self randomString];
+    returnModel.emergencyNumber = [self randomString];
+    returnModel.secretCode = [self randomString];
+    return returnModel;
+}
+
+- (NSString *)randomString
+{
+    return [[NSData randomDataWithLength:10] convertToHex];
 }
 
 

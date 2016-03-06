@@ -20,6 +20,7 @@
 		8402C6A31C8B73F000287DC1 /* AppStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6A21C8B73F000287DC1 /* AppStorage.m */; };
 		8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6B31C8B852C00287DC1 /* ModelValidator.m */; };
 		8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */; };
+		8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
 		8402C6BD1C8B8C2400287DC1 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		8402C6C11C8BA6FD00287DC1 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		8402C6C21C8BABC000287DC1 /* NSData+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Helpers.h"; sourceTree = "<group>"; };
+		8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 			children = (
 				8402C6BA1C8B8A1B00287DC1 /* UIViewController+Helpers.h */,
 				8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */,
+				8402C6C21C8BABC000287DC1 /* NSData+Helpers.h */,
+				8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			files = (
 				8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */,
 				8402C67C1C8B725500287DC1 /* AppDelegate.m in Sources */,
+				8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */,
 				8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */,
 				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
 				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
@@ -381,6 +387,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SOS/SOSPrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					TEST_SIGN_UP,
+				);
 				INFOPLIST_FILE = SOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.team14.SOS;
