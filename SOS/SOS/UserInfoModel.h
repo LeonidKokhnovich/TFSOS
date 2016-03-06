@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSString *firstName;
 @property (nonatomic) NSString *lastName;
-@property (nonatomic) NSString *birthDate;
+@property (nonatomic) NSNumber *birthDate;
 @property (nonatomic) NSString *homeAddress;
 @property (nonatomic) NSString *phoneNumber;
 @property (nonatomic) NSString *emergencyContact;

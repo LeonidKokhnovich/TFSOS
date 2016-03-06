@@ -12,6 +12,7 @@
 
 NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
 NSInteger RESPONSE_STATUS_CODE_CREATE_SUCCEED = 201;
+
 NSString *CONTENT_TYPE_KEY = @"Content-Type";
 NSString *JSON_CONTENT_TYPE = @"application/json";
 

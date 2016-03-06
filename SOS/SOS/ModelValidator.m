@@ -24,7 +24,7 @@
     if (    model
         &&  [self validateBasicStringParameter:model.firstName]
         &&  [self validateBasicStringParameter:model.lastName]
-        &&  [self validateBasicStringParameter:model.birthDate]
+        &&  model.birthDate
         &&  [self validateBasicStringParameter:model.homeAddress]
         &&  [self validateBasicStringParameter:model.phoneNumber]
         &&  [self validateBasicStringParameter:model.emergencyContact]

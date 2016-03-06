@@ -28,6 +28,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomLayoutConstraint;
 @property (weak, nonatomic) IBOutlet UIView *activityOverlay;
+@property (nonatomic) NSNumberFormatter *numberFormatter;
 
 @end
 
@@ -77,6 +78,14 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
 #pragma mark -
 #pragma mark Accessories
+
+- (NSNumberFormatter *)numberFormatter
+{
+    if (_numberFormatter == nil) {
+        _numberFormatter = [NSNumberFormatter new];
+    }
+    return _numberFormatter;
+}
 
 
 #pragma mark -
@@ -165,7 +174,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     UserInfoModel *returnModel = [UserInfoModel new];
     returnModel.firstName = self.firstNameTextField.text;
     returnModel.lastName = self.lastNameTextField.text;
-    returnModel.birthDate = self.birthDateTextField.text;
+    returnModel.birthDate = [self.numberFormatter numberFromString:self.birthDateTextField.text];
     returnModel.homeAddress = self.homeAddressTextField.text;
     returnModel.phoneNumber = self.phoneNumberTextField.text;
     returnModel.emergencyContact = self.emergencyContactTextField.text;
@@ -179,7 +188,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     UserInfoModel *returnModel = [UserInfoModel new];
     returnModel.firstName = [self randomString];
     returnModel.lastName = [self randomString];
-    returnModel.birthDate = [self randomString];
+    returnModel.birthDate = [NSNumber numberWithInteger:arc4random()];
     returnModel.homeAddress = [self randomString];
     returnModel.phoneNumber = [self randomString];
     returnModel.emergencyContact = [self randomString];
