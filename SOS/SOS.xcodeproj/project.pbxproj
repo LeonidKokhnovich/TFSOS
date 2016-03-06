@@ -24,9 +24,11 @@
 		84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9967E1C8BB574008790BC /* SOSMaster.m */; };
 		84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */; };
 		84CDFE4A1C8C92570048816C /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE491C8C92570048816C /* UIView+Helpers.m */; };
+		ABE1F4DF1B9A6440BE1EA38E /* libPods-SOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20929258F86DDBB3341EB1E8 /* Pods-SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SOS/Pods-SOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8402C6741C8B725500287DC1 /* SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8402C6781C8B725500287DC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8402C67A1C8B725500287DC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 		84B9968C1C8BF0CB008790BC /* NetworkingMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingMisc.h; sourceTree = "<group>"; };
 		84CDFE481C8C92570048816C /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		84CDFE491C8C92570048816C /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C67016D55B582660EACC647D /* Pods-SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS/Pods-SOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +79,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE1F4DF1B9A6440BE1EA38E /* libPods-SOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		835BCD73EE9C2087860AA5C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8402C66B1C8B725500287DC1 = {
 			isa = PBXGroup;
 			children = (
 				8402C6761C8B725500287DC1 /* SOS */,
 				8402C6751C8B725500287DC1 /* Products */,
+				F7D3B310AA02FC0361A2D784 /* Pods */,
+				835BCD73EE9C2087860AA5C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +231,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		F7D3B310AA02FC0361A2D784 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				20929258F86DDBB3341EB1E8 /* Pods-SOS.debug.xcconfig */,
+				C67016D55B582660EACC647D /* Pods-SOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,9 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8402C68B1C8B725500287DC1 /* Build configuration list for PBXNativeTarget "SOS" */;
 			buildPhases = (
+				4524B4EC45EA0B48A90C5C25 /* Check Pods Manifest.lock */,
 				8402C6701C8B725500287DC1 /* Sources */,
 				8402C6711C8B725500287DC1 /* Frameworks */,
 				8402C6721C8B725500287DC1 /* Resources */,
+				4595BE4CDB304ECADDCD9CCC /* Embed Pods Frameworks */,
+				AFD3F3A5AD604911530D0507 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,6 +307,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4524B4EC45EA0B48A90C5C25 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4595BE4CDB304ECADDCD9CCC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SOS/Pods-SOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFD3F3A5AD604911530D0507 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SOS/Pods-SOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8402C6701C8B725500287DC1 /* Sources */ = {
@@ -407,6 +482,7 @@
 		};
 		8402C68C1C8B725500287DC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20929258F86DDBB3341EB1E8 /* Pods-SOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -424,6 +500,7 @@
 		};
 		8402C68D1C8B725500287DC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67016D55B582660EACC647D /* Pods-SOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

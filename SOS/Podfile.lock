@@ -1,0 +1,13 @@
+PODS:
+  - DCPathButton (2.1.3)
+  - TGCameraViewController (2.2.2)
+
+DEPENDENCIES:
+  - DCPathButton (~> 2.1.3)
+  - TGCameraViewController
+
+SPEC CHECKSUMS:
+  DCPathButton: 431bb93072e8d25bd0de0eaa0373e39d896a38e3
+  TGCameraViewController: 010082bae689f3940b132b310b44e4ddc5a4f8e4
+
+COCOAPODS: 0.39.0
