@@ -223,6 +223,46 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
     }
 }
 
+- (void)retrieveStatusForSOSWithUUID:(NSString *)SOSUUID
+                     completionBlock:(void (^)(SOS_STATUS status, NSError *error))completionBlock
+{
+    NSLog(@"Perform SOS status querying for SOS session with UUID: %@", SOSUUID);
+    
+        NSString *URLString = [NSString stringWithFormat:@"%@%@%@",
+                               SOS_WEB_SERVER_BASE_URL,
+                               SOS_WEB_SERVER_PATH_SOS,
+                               SOSUUID];
+        
+        NSURL *URL = [NSURL URLWithString:URLString];
+        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                      
+                                      {
+                                          NSLog(@"Did finish SOS session status querying with response: %@, data: %@, error: %@", response, data, error);
+                                          
+                                          NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+                                          SOS_STATUS status = SOS_STATUS_UNKNOWN;
+                                          
+                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
+                                              &&  data)
+                                          {
+                                              NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                             options:0
+                                                                                                               error:&error];
+                                              if (parsedResponse) {
+                                                  status = [[parsedResponse objectForKey:SOS_STATUS_KEY] unsignedIntegerValue];
+                                              }
+                                          }
+                                          
+                                          if (completionBlock) {
+                                              completionBlock(status, error);
+                                          }
+                                      }];
+        [task resume];
+}
+
 
 #pragma mark -
 #pragma mark Accessories

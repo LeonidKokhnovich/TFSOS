@@ -127,14 +127,7 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
          self.deactivating = NO;
          
          if (error == nil) {
-             self.SOSUUID = nil;
-             [self.locationManager stopUpdatingLocation];
-             
-             if ([self.delegate respondsToSelector:@selector(masterDidStopSOS:)]) {
-                 dispatch_async(self.callbacksQueue, ^{
-                     [self.delegate masterDidStopSOS:self];
-                 });
-             }
+             [self forceSOSToStop];
          }
          else if ([self.delegate respondsToSelector:@selector(master:didFailToStopSOSWithError:)]) {
              dispatch_async(self.callbacksQueue, ^{
@@ -176,12 +169,31 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
     
     if ([ModelValidator validateSOSModel:SOS]) {
         weakify(self);
-        [[NetworkCommunicator sharedInstance] performUpdateForSOS:SOS
-                                                  completionBlock:^(NSError * _Nonnull error)
+        [[NetworkCommunicator sharedInstance] retrieveStatusForSOSWithUUID:self.SOSUUID
+                                                           completionBlock:^(SOS_STATUS status, NSError * _Nonnull error)
          {
              strongify(self);
-             if (   error
-                 && [self.delegate respondsToSelector:@selector(master:didFailToDeliverSOSWithError:)])
+             if (error == nil) {
+                 if (status == SOS_STATUS_CANCELLED) {
+                     [self forceSOSToStop];
+                 }
+                 else {
+                     weakify(self);
+                     [[NetworkCommunicator sharedInstance] performUpdateForSOS:SOS
+                                                               completionBlock:^(NSError * _Nonnull error)
+                      {
+                          strongify(self);
+                          if (   error
+                              && [self.delegate respondsToSelector:@selector(master:didFailToDeliverSOSWithError:)])
+                          {
+                              dispatch_async(self.callbacksQueue, ^{
+                                  [self.delegate master:self didFailToDeliverSOSWithError:error];
+                              });
+                          }
+                      }];
+                 }
+             }
+             else if ([self.delegate respondsToSelector:@selector(master:didFailToDeliverSOSWithError:)])
              {
                  dispatch_async(self.callbacksQueue, ^{
                      [self.delegate master:self didFailToDeliverSOSWithError:error];
@@ -195,6 +207,18 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
                                          userInfo:@{NSLocalizedDescriptionKey: @"Can't deliver SOS, request data are not valid."}];
         dispatch_async(self.callbacksQueue, ^{
             [self.delegate master:self didFailToDeliverSOSWithError:error];
+        });
+    }
+}
+
+- (void)forceSOSToStop
+{
+    self.SOSUUID = nil;
+    [self.locationManager stopUpdatingLocation];
+    
+    if ([self.delegate respondsToSelector:@selector(masterDidStopSOS:)]) {
+        dispatch_async(self.callbacksQueue, ^{
+            [self.delegate masterDidStopSOS:self];
         });
     }
 }

@@ -16,12 +16,4 @@ typedef NS_ENUM(NSUInteger, SOS_MASTER_ERROR_CODE) {
     SOS_MASTER_ERROR_CODE_INVALID_SOS_DATA
 };
 
-#define USER_UUID_KEY @"user_uuid"
-#define SOS_UUID_KEY @"sos_uuid"
-#define SOS_STATUS_KEY @"status"
-
-typedef NS_ENUM(NSUInteger, SOS_STATUS) {
-    SOS_STATUS_CANCELLED = 0
-};
-
 #endif /* SOSMisc_h */

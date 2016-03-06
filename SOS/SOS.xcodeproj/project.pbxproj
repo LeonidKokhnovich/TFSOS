@@ -64,6 +64,7 @@
 		84B996801C8BB976008790BC /* SOSMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOSMisc.h; sourceTree = "<group>"; };
 		84B996891C8BDE6C008790BC /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
 		84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
+		84B9968C1C8BF0CB008790BC /* NetworkingMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingMisc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +193,7 @@
 				8402C6BD1C8B8C2400287DC1 /* Config.h */,
 				8402C6C11C8BA6FD00287DC1 /* Helpers.h */,
 				84B996801C8BB976008790BC /* SOSMisc.h */,
+				84B9968C1C8BF0CB008790BC /* NetworkingMisc.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";

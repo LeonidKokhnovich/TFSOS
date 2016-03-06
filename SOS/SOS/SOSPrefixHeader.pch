@@ -19,5 +19,6 @@
 #import "Config.h"
 #import "Helpers.h"
 #import "SOSMisc.h"
+#import "NetworkingMisc.h"
 
 #endif /* SOSPrefixHeader_pch */
