@@ -37,7 +37,7 @@ typedef void (^ RequestLocationPermissionCompletionBlock)(void);
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        self.locationManager.distanceFilter = 50;
+        self.locationManager.distanceFilter = 10;
     }
     return self;
 }
