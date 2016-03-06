@@ -11,6 +11,15 @@
 #import "SOSModel.h"
 
 NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
+NSInteger RESPONSE_STATUS_CODE_CREATE_SUCCEED = 201;
+NSString *CONTENT_TYPE_KEY = @"Content-Type";
+NSString *JSON_CONTENT_TYPE = @"application/json";
+
+NSString *CREATE_USER_REQUEST_LABEL = @"register user";
+NSString *CREATE_SOS_SESSION_REQUEST_LABEL = @"create SOS session";
+NSString *UPDATE_SOS_SESSION_DATA_REQUEST_LABEL = @"update SOS session data";
+NSString *UPDATE_SOS_SESSION_STATUS_REQUEST_LABEL = @"update SOS session status";
+NSString *RETRIEVE_SOS_SESSION_INFO_REQUEST_LABEL = @"retrieve SOS session info";
 
 @implementation NetworkCommunicator
 
@@ -29,20 +38,12 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
 
 
 #pragma mark -
-#pragma mark Life Circle
-
-#pragma mark -
-#pragma mark User Actions
-
-#pragma mark -
 #pragma mark Public Methods
 
 - (void)performRegisterUserRequestWithUserInfo:(UserInfoModel *)userInfo
                                completionBlock:(void (^)(NSString *userUUID, NSError *error))completionBlock
 {
     NSDictionary *attributes = [userInfo toDictionary];
- 
-    NSLog(@"Perform register user request with attributes: %@.", attributes);
     
     NSError *error;
     NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
@@ -57,32 +58,40 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
         URLRequest.HTTPMethod = @"POST";
+        [URLRequest setValue:JSON_CONTENT_TYPE forHTTPHeaderField:CONTENT_TYPE_KEY];
         URLRequest.HTTPBody = payload;
         
+        NSLog(@"%@", [self messageForRequestWithLabel:CREATE_USER_REQUEST_LABEL
+                                           URLRequest:URLRequest]);
+        
+        weakify(self);
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
                                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-         {
-             NSLog(@"Did finish register user request with response: %@, data: %@, error: %@.", response,
-                   data, error);
-             
-             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-             NSString *userUUID;
-             
-             if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
-                 &&  data)
-             {
-                 NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                                options:0
-                                                                                  error:&error];
-                 if (parsedResponse) {
-                     userUUID = [parsedResponse objectForKey:USER_UUID_KEY];
-                 }
-             }
-             
-             if (completionBlock) {
-                 completionBlock(userUUID, error);
-             }
-         }];
+                                      {
+                                          strongify(self);
+                                          NSLog(@"%@", [self messageForCompletedDataTaskWithLabel:CREATE_USER_REQUEST_LABEL
+                                                                                             data:data
+                                                                                         response:response
+                                                                                            error:error]);
+                                          
+                                          NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+                                          NSString *userUUID;
+                                          
+                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_CREATE_SUCCEED
+                                              &&  data)
+                                          {
+                                              NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                             options:0
+                                                                                                               error:&error];
+                                              if (parsedResponse) {
+                                                  userUUID = [parsedResponse objectForKey:USER_UUID_KEY];
+                                              }
+                                          }
+                                          
+                                          if (completionBlock) {
+                                              completionBlock(userUUID, error);
+                                          }
+                                      }];
         [task resume];
     }
     else if (completionBlock) {
@@ -94,9 +103,6 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
                                completionBlock:(void (^)(NSString *SOSUUID, NSError *error))completionBlock
 {
     NSDictionary *attributes = @{USER_UUID_KEY: userUUID};
-    
-    NSLog(@"Perform create SOS session with attributes: %@", attributes);
-    
     NSError *error;
     NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
                                                       options:0
@@ -110,18 +116,26 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
         URLRequest.HTTPMethod = @"POST";
+        [URLRequest setValue:JSON_CONTENT_TYPE forHTTPHeaderField:CONTENT_TYPE_KEY];
         URLRequest.HTTPBody = payload;
         
+        NSLog(@"%@", [self messageForRequestWithLabel:CREATE_SOS_SESSION_REQUEST_LABEL
+                                           URLRequest:URLRequest]);
+        weakify(self);
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
                                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
                                       
-        {
-                                          NSLog(@"Did finish create SOS session with response: %@, data: %@, error: %@", response, data, error);
+                                      {
+                                          strongify(self);
+                                          NSLog(@"%@", [self messageForCompletedDataTaskWithLabel:CREATE_SOS_SESSION_REQUEST_LABEL
+                                                                                             data:data
+                                                                                         response:response
+                                                                                            error:error]);
                                           
                                           NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
                                           NSString *sosUUID;
                                           
-                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
+                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_CREATE_SUCCEED
                                               &&  data)
                                           {
                                               NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
@@ -147,9 +161,6 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
             completionBlock:(void (^)(NSError *error))completionBlock
 {
     NSDictionary *attributes = [SOS toDictionary];
-    
-    NSLog(@"Perform update SOS request with attributes: %@", attributes);
-    
     NSError *error;
     NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
                                                       options:0
@@ -164,12 +175,21 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
         URLRequest.HTTPMethod = @"POST";
+        [URLRequest setValue:JSON_CONTENT_TYPE forHTTPHeaderField:CONTENT_TYPE_KEY];
         URLRequest.HTTPBody = payload;
         
+        NSLog(@"%@", [self messageForRequestWithLabel:UPDATE_SOS_SESSION_DATA_REQUEST_LABEL
+                                           URLRequest:URLRequest]);
+        
+        weakify(self);
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
                                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
                                       {
-                                          NSLog(@"Did finish update SOS request with response: %@, data: %@, error: %@", response, data, error);
+                                          strongify(self);
+                                          NSLog(@"%@", [self messageForCompletedDataTaskWithLabel:UPDATE_SOS_SESSION_DATA_REQUEST_LABEL
+                                                                                             data:data
+                                                                                         response:response
+                                                                                            error:error]);
                                           
                                           if (completionBlock) {
                                               completionBlock(error);
@@ -188,9 +208,6 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
 {
     NSDictionary *attributes = @{SOS_UUID_KEY: SOSUUID,
                                  SOS_STATUS_KEY: @(SOSStatus)};
-    
-    NSLog(@"Perform update SOS session status with attributes: %@", attributes);
-    
     NSError *error;
     NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
                                                       options:0
@@ -204,13 +221,21 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
         URLRequest.HTTPMethod = @"POST";
+        [URLRequest setValue:JSON_CONTENT_TYPE forHTTPHeaderField:CONTENT_TYPE_KEY];
         URLRequest.HTTPBody = payload;
         
+        NSLog(@"%@", [self messageForRequestWithLabel:UPDATE_SOS_SESSION_STATUS_REQUEST_LABEL
+                                           URLRequest:URLRequest]);
+        weakify(self);
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
                                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
                                       
                                       {
-                                          NSLog(@"Did finish update SOS session status with response: %@, data: %@, error: %@", response, data, error);
+                                          strongify(self);
+                                          NSLog(@"%@", [self messageForCompletedDataTaskWithLabel:UPDATE_SOS_SESSION_STATUS_REQUEST_LABEL
+                                                                                             data:data
+                                                                                         response:response
+                                                                                            error:error]);
                                           
                                           if (completionBlock) {
                                               completionBlock(error);
@@ -228,52 +253,61 @@ NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
 {
     NSLog(@"Perform SOS status querying for SOS session with UUID: %@", SOSUUID);
     
-        NSString *URLString = [NSString stringWithFormat:@"%@%@%@",
-                               SOS_WEB_SERVER_BASE_URL,
-                               SOS_WEB_SERVER_PATH_SOS,
-                               SOSUUID];
-        
-        NSURL *URL = [NSURL URLWithString:URLString];
-        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
-                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+    NSString *URLString = [NSString stringWithFormat:@"%@%@%@",
+                           SOS_WEB_SERVER_BASE_URL,
+                           SOS_WEB_SERVER_PATH_SOS,
+                           SOSUUID];
+    
+    NSURL *URL = [NSURL URLWithString:URLString];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
+    
+    NSLog(@"%@", [self messageForRequestWithLabel:RETRIEVE_SOS_SESSION_INFO_REQUEST_LABEL
+                                       URLRequest:URLRequest]);
+    weakify(self);
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                  
+                                  {
+                                      strongify(self);
+                                      NSLog(@"%@", [self messageForCompletedDataTaskWithLabel:RETRIEVE_SOS_SESSION_INFO_REQUEST_LABEL
+                                                                                         data:data
+                                                                                     response:response
+                                                                                        error:error]);
                                       
+                                      NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+                                      SOS_STATUS status = SOS_STATUS_UNKNOWN;
+                                      
+                                      if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
+                                          &&  data)
                                       {
-                                          NSLog(@"Did finish SOS session status querying with response: %@, data: %@, error: %@", response, data, error);
-                                          
-                                          NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-                                          SOS_STATUS status = SOS_STATUS_UNKNOWN;
-                                          
-                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
-                                              &&  data)
-                                          {
-                                              NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                                                             options:0
-                                                                                                               error:&error];
-                                              if (parsedResponse) {
-                                                  status = [[parsedResponse objectForKey:SOS_STATUS_KEY] unsignedIntegerValue];
-                                              }
+                                          NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                         options:0
+                                                                                                           error:&error];
+                                          if (parsedResponse) {
+                                              status = [[parsedResponse objectForKey:SOS_STATUS_KEY] unsignedIntegerValue];
                                           }
-                                          
-                                          if (completionBlock) {
-                                              completionBlock(status, error);
-                                          }
-                                      }];
-        [task resume];
+                                      }
+                                      
+                                      if (completionBlock) {
+                                          completionBlock(status, error);
+                                      }
+                                  }];
+    [task resume];
 }
 
 
 #pragma mark -
-#pragma mark Accessories
-
-#pragma mark -
 #pragma mark Helper Methods
 
-#pragma mark -
-#pragma mark Delegate Methods
+- (NSString *)messageForRequestWithLabel:(NSString *)title URLRequest:(NSURLRequest *)URLRequest
+{
+    return [NSString stringWithFormat:@"Start %@ task\nurl request: %@", title, URLRequest];
+}
 
-#pragma mark -
-#pragma mark Notifications Handling Methods
+- (NSString *)messageForCompletedDataTaskWithLabel:(NSString *)title data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error
+{
+    return [NSString stringWithFormat:@"Did finish %@ task\ndata: %@\nresponse: %@\nerror: %@", title, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], response, error];
+}
+
 
 @end

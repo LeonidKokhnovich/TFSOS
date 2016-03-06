@@ -134,7 +134,7 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
                  if (/* DISABLES CODE */ (YES)) {
                      blockedUserUUID = [NSString stringWithFormat:@"%zd", arc4random()];
 #else
-                     if (blockUserUUID) {
+                     if (blockedUserUUID) {
 #endif
                          [[AppStorage sharedInstance] saveUserUUID:blockedUserUUID];
                          
