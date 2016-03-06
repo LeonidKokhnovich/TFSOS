@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SOSModel : NSObject <Serializable>
 
+@property (nonatomic) NSString *userUUID;
+@property (nonatomic) NSString *SOSUUID;
+@property (nonatomic) double longitude;
+@property (nonatomic) double latitude;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -60,6 +60,7 @@
 		84B9967C1C8BB290008790BC /* UserSessionObligatorily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSessionObligatorily.h; sourceTree = "<group>"; };
 		84B9967D1C8BB574008790BC /* SOSMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSMaster.h; sourceTree = "<group>"; };
 		84B9967E1C8BB574008790BC /* SOSMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSMaster.m; sourceTree = "<group>"; };
+		84B996801C8BB976008790BC /* SOSMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOSMisc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +188,7 @@
 				8402C6B81C8B899600287DC1 /* TextStrings.h */,
 				8402C6BD1C8B8C2400287DC1 /* Config.h */,
 				8402C6C11C8BA6FD00287DC1 /* Helpers.h */,
+				84B996801C8BB976008790BC /* SOSMisc.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -399,6 +401,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 					TEST_SIGN_UP,
+					TEST_START_SOS,
 				);
 				INFOPLIST_FILE = SOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

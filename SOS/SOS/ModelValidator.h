@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ModelValidator : NSObject
 
 + (BOOL)validateUserInfoModel:(UserInfoModel *)model;
++ (BOOL)validateSOSModel:(SOSModel *)model;
 
 @end
 

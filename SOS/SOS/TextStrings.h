@@ -13,5 +13,6 @@
 #define TextStringWarning NSLocalizedString(@"Warning", nil)
 #define TextStringInputIsNotValid NSLocalizedString(@"Please, check if the input is valid", nil)
 #define TextStringNetworkRequestFailed NSLocalizedString(@"Network request failed. Please, try again.", nil)
+#define TextStringFailedToPerformSOS NSLocalizedString(@"Did fail to perform SOS. Please, try again.", nil)
 
 #endif /* TextStrings_h */

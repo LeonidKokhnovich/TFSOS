@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "AppStorage.h"
+
+NSString *SOS_SCREEN_IDENTIFIER = @"SOS VC";
+NSString *MAIN_STORYBOARD_NAME = @"Main";
 
 @interface AppDelegate ()
 
@@ -16,7 +20,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self autorizeUser];
+    
     return YES;
 }
 
@@ -41,5 +46,28 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark -
+#pragma mark Helper Methods
+
+- (void)autorizeUser
+{
+    NSString *userUUID = [[AppStorage sharedInstance] userUUID];
+    if (userUUID) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN_STORYBOARD_NAME
+                                                             bundle:nil];
+        UIViewController <UserSessionObligatorily> *SOSVC = [storyboard instantiateViewControllerWithIdentifier:SOS_SCREEN_IDENTIFIER];
+        SOSVC.userUUID = userUUID;
+        
+        if (SOSVC) {
+            self.window.rootViewController = SOSVC;
+        }
+        else {
+            NSLog(@"Can't instantiate SOS VC.");
+        }
+    }
+}
+
+
 
 @end

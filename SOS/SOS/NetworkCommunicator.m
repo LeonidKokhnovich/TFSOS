@@ -8,9 +8,9 @@
 
 #import "NetworkCommunicator.h"
 #import "UserInfoModel.h"
+#import "SOSModel.h"
 
 NSInteger RESPONSE_STATUS_CODE_SUCCESS = 200;
-NSString *USER_UUID_KEY = @"user_uuid";
 
 @implementation NetworkCommunicator
 
@@ -40,17 +40,17 @@ NSString *USER_UUID_KEY = @"user_uuid";
 - (void)performRegisterUserRequestWithUserInfo:(UserInfoModel *)userInfo
                                completionBlock:(void (^)(NSString *userUUID, NSError *error))completionBlock
 {
-    NSDictionary *modelDictionary = [userInfo toDictionary];
+    NSDictionary *attributes = [userInfo toDictionary];
     
     NSError *error;
-    NSData *payload = [NSJSONSerialization dataWithJSONObject:modelDictionary
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
                                                       options:0
                                                         error:&error];
     
     if (payload) {
         NSString *URLString = [NSString stringWithFormat:@"%@%@",
                                SOS_WEB_SERVER_BASE_URL,
-                               SOS_WEB_SERVER_REGISTER_NEW_USER_PATH];
+                               SOS_WEB_SERVER_PATH_USER];
         
         NSURL *URL = [NSURL URLWithString:URLString];
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
@@ -82,6 +82,89 @@ NSString *USER_UUID_KEY = @"user_uuid";
     }
     else if (completionBlock) {
         completionBlock(nil, error);
+    }
+}
+
+- (void)performCreateSOSSessionForUserWithUUID:(NSString *)userUUID
+                               completionBlock:(void (^)(NSString *SOSUUID, NSError *error))completionBlock
+{
+    NSDictionary *attributes = @{USER_UUID_KEY: userUUID};
+    
+    NSError *error;
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
+                                                      options:0
+                                                        error:&error];
+    
+    if (payload) {
+        NSString *URLString = [NSString stringWithFormat:@"%@%@",
+                               SOS_WEB_SERVER_BASE_URL,
+                               SOS_WEB_SERVER_PATH_SOS];
+        
+        NSURL *URL = [NSURL URLWithString:URLString];
+        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
+        URLRequest.HTTPMethod = @"POST";
+        URLRequest.HTTPBody = payload;
+        
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                      {
+                                          NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+                                          NSString *sosUUID;
+                                          
+                                          if (    HTTPResponse.statusCode == RESPONSE_STATUS_CODE_SUCCESS
+                                              &&  data)
+                                          {
+                                              NSDictionary *parsedResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                             options:0
+                                                                                                               error:&error];
+                                              if (parsedResponse) {
+                                                  sosUUID = [parsedResponse objectForKey:SOS_UUID_KEY];
+                                              }
+                                          }
+                                          
+                                          if (completionBlock) {
+                                              completionBlock(sosUUID, error);
+                                          }
+                                      }];
+        [task resume];
+    }
+    else if (completionBlock) {
+        completionBlock(nil, error);
+    }
+}
+
+- (void)performUpdateForSOS:(SOSModel *)SOS
+            completionBlock:(void (^)(NSError *error))completionBlock
+{
+    NSDictionary *attributes = [SOS toDictionary];
+    
+    NSError *error;
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:attributes
+                                                      options:0
+                                                        error:&error];
+    
+    if (payload) {
+        NSString *URLString = [NSString stringWithFormat:@"%@%@%@",
+                               SOS_WEB_SERVER_BASE_URL,
+                               SOS_WEB_SERVER_PATH_SOS,
+                               SOS.SOSUUID];
+        
+        NSURL *URL = [NSURL URLWithString:URLString];
+        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:URL];
+        URLRequest.HTTPMethod = @"POST";
+        URLRequest.HTTPBody = payload;
+        
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:URLRequest
+                                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                      {
+                                          if (completionBlock) {
+                                              completionBlock(error);
+                                          }
+                                      }];
+        [task resume];
+    }
+    else if (completionBlock) {
+        completionBlock(error);
     }
 }
 

@@ -17,5 +17,6 @@
 #import "NSData+Helpers.h"
 #import "Config.h"
 #import "Helpers.h"
+#import "SOSMisc.h"
 
 #endif /* SOSPrefixHeader_pch */

@@ -43,5 +43,13 @@ _Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = AHKWeak_##var; \
 _Pragma("clang diagnostic pop")
 
+/**
+ *  Custom logger.
+ */
+#if defined(DEBUG) || defined(INTERNAL_DISTRIBUTION)
+#define NSLog(args, ...) NSLog((@"%s[Line %d]: " args), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
 
 #endif /* Helpers_h */

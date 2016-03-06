@@ -292,7 +292,7 @@
         <!--View Controller-->
         <scene sceneID="sZ0-aA-jQm">
             <objects>
-                <viewController id="g7k-sV-7bX" customClass="SOSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SOS VC" id="g7k-sV-7bX" customClass="SOSViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Mf-V4-Kps"/>
                         <viewControllerLayoutGuide type="bottom" id="xvn-AI-20P"/>
@@ -304,7 +304,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-Ib-mB5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOSButton" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-9K-ett">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOSButton" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-9K-ett">
                                         <rect key="frame" x="152" y="253" width="295" height="295"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -377,21 +377,39 @@
                                     <constraint firstItem="rvq-ui-Hse" firstAttribute="centerX" secondItem="pPw-pT-28F" secondAttribute="centerX" id="nbO-VR-1xJ"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bds-Mm-cxb" userLabel="Activity Overlay">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WQy-bN-BUe">
+                                        <rect key="frame" x="290" y="390" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="WQy-bN-BUe" firstAttribute="centerX" secondItem="bds-Mm-cxb" secondAttribute="centerX" id="AQd-de-wnw"/>
+                                    <constraint firstItem="WQy-bN-BUe" firstAttribute="centerY" secondItem="bds-Mm-cxb" secondAttribute="centerY" id="EW8-1l-Bl9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ImP-ZN-JEK" secondAttribute="trailing" id="0l6-69-hbc"/>
                             <constraint firstItem="xvn-AI-20P" firstAttribute="top" secondItem="eQJ-Ib-mB5" secondAttribute="bottom" id="15s-jy-TIc"/>
+                            <constraint firstItem="xvn-AI-20P" firstAttribute="top" secondItem="bds-Mm-cxb" secondAttribute="bottom" id="Oye-QH-Cff"/>
                             <constraint firstAttribute="trailing" secondItem="eQJ-Ib-mB5" secondAttribute="trailing" id="SEi-ew-uCI"/>
                             <constraint firstItem="ImP-ZN-JEK" firstAttribute="leading" secondItem="VVi-1l-buZ" secondAttribute="leading" id="TNL-V2-ebZ"/>
                             <constraint firstItem="xvn-AI-20P" firstAttribute="top" secondItem="ImP-ZN-JEK" secondAttribute="bottom" id="WcB-AD-FAn"/>
+                            <constraint firstAttribute="trailing" secondItem="bds-Mm-cxb" secondAttribute="trailing" id="ePd-QL-Jmo"/>
                             <constraint firstItem="eQJ-Ib-mB5" firstAttribute="leading" secondItem="VVi-1l-buZ" secondAttribute="leading" id="fO9-lM-DUT"/>
+                            <constraint firstItem="bds-Mm-cxb" firstAttribute="leading" secondItem="VVi-1l-buZ" secondAttribute="leading" id="luf-t4-hRC"/>
                             <constraint firstItem="eQJ-Ib-mB5" firstAttribute="top" secondItem="VVi-1l-buZ" secondAttribute="top" id="o9p-3V-iNG"/>
                             <constraint firstItem="ImP-ZN-JEK" firstAttribute="top" secondItem="VVi-1l-buZ" secondAttribute="top" id="pu7-u7-uCw"/>
+                            <constraint firstItem="bds-Mm-cxb" firstAttribute="top" secondItem="VVi-1l-buZ" secondAttribute="top" id="r4f-bb-ayO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activateSOSContainerView" destination="eQJ-Ib-mB5" id="K6S-zX-Ovf"/>
+                        <outlet property="activityOverlay" destination="bds-Mm-cxb" id="MPd-E4-Oqf"/>
                         <outlet property="deactivateSOSContainerView" destination="ImP-ZN-JEK" id="kHG-rh-sUt"/>
                         <outlet property="secretCodeTextField" destination="SLd-CU-h6o" id="XPn-RP-Ckt"/>
                     </connections>

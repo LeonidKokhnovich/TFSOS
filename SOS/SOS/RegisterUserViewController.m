@@ -11,6 +11,7 @@
 #import "ModelValidator.h"
 #import "NetworkCommunicator.h"
 #import "AppStorage.h"
+#import "UserSessionObligatorily.h"
 
 NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
@@ -35,17 +36,11 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 #pragma mark -
 #pragma mark Life Circle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     [self subscribeToNotifications];
-    [self checkUserAuthorizationStatus];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -54,6 +49,18 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     
     [self unsubscribeFromNotifications];
 }
+
+#pragma mark View Transitions
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SEGUE_NAME_SHOW_SOS]) {
+        NSString *userUUID = [[AppStorage sharedInstance] userUUID];
+        id <UserSessionObligatorily> vc = segue.destinationViewController;
+        [vc setUserUUID:userUUID];
+    }
+}
+
 
 #pragma mark -
 #pragma mark User Actions
