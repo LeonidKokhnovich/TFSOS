@@ -10,6 +10,8 @@
 
 NSString *LONGITUDE_DATE_KEY = @"longitude";
 NSString *LATITUDE_ADDRESS_KEY = @"latitude";
+NSString *LOCATION_LIST_KEY = @"location_list";
+NSString *DATE_KEY = @"date";
 
 @implementation SOSModel
 
@@ -18,10 +20,10 @@ NSString *LATITUDE_ADDRESS_KEY = @"latitude";
 
 - (NSDictionary *)toDictionary
 {
-    return @{USER_UUID_KEY: self.userUUID,
-             SOS_UUID_KEY: self.SOSUUID,
-             LONGITUDE_DATE_KEY: @(self.longitude),
-             LATITUDE_ADDRESS_KEY: @(self.latitude)};
+    NSInteger timestampt = [[NSDate date] timeIntervalSinceReferenceDate];
+    return @{LOCATION_LIST_KEY: @[@{DATE_KEY: @(timestampt),
+                                    LONGITUDE_DATE_KEY: @(self.longitude),
+                                    LATITUDE_ADDRESS_KEY: @(self.latitude)}]};
 }
 
 @end
