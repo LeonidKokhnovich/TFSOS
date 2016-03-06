@@ -13,6 +13,4 @@
 #define SOS_WEB_SERVER_PATH_USER @"/user/"
 #define SOS_WEB_SERVER_PATH_SOS @"/sos/"
 
-#define SOS_WEB_SERVER_
-
 #endif /* Config_h */

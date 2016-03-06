@@ -188,18 +188,50 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
     return [[NSData randomDataWithLength:10] convertToHex];
 }
 
+- (NSArray <UITextField *> *)textFields
+{
+    return @[self.firstNameTextField,
+             self.lastNameTextField,
+             self.birthDateTextField,
+             self.homeAddressTextField,
+             self.phoneNumberTextField,
+             self.emergencyContactTextField,
+             self.emergencyNumberTextField,
+             self.secretCodeTextField];
+}
+
+- (void)makeViewVisible:(UIView *)view
+       withinScrollView:(UIScrollView *)scrollView
+               animated:(BOOL)animated
+{
+    CGPoint contentOffset = scrollView.contentOffset;
+    CGSize contentViewSize = scrollView.contentSize;
+    static CGFloat minEdgeOffset = 80.0f;
+    
+    if (CGRectGetMinY(view.frame) < contentOffset.y + minEdgeOffset) {
+        CGPoint newContentOffset = CGPointMake(contentOffset.x,
+                                               CGRectGetMinY(view.frame) - minEdgeOffset);
+        [scrollView setContentOffset:newContentOffset animated:animated];
+    }
+    if (CGRectGetMaxY(view.frame) > contentOffset.y + contentViewSize.height - minEdgeOffset) {
+        CGPoint newContentOffset = CGPointMake(contentOffset.x,
+                                               CGRectGetMaxY(view.frame) - contentViewSize.height + minEdgeOffset);
+        [scrollView setContentOffset:newContentOffset animated:animated];
+    }
+}
+
 
 #pragma mark Subcribers
 
 - (void)subscribeToNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onKeyboardWillAppearNotification:)
+                                             selector:@selector(onKeyboardWillShowNotification:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onKeyboardWillAppearNotification:)
+                                             selector:@selector(onKeyboardWillHideNotification:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 }
@@ -214,6 +246,25 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    NSArray *textFields = [self textFields];
+    NSInteger textFieldIndex = [textFields indexOfObject:textField];
+    
+    if (    textFieldIndex != textFields.count - 1
+        &&  textFieldIndex != NSNotFound)
+    {
+        UITextField *nextTextField = [textFields objectAtIndex:textFieldIndex + 1];
+        [nextTextField becomeFirstResponder];
+        
+        [self makeViewVisible:nextTextField
+             withinScrollView:self.scrollView
+                     animated:YES];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+        [self registerUser];
+    }
+    
     return YES;
 }
 
@@ -221,13 +272,13 @@ NSString *SEGUE_NAME_SHOW_SOS = @"Show SOS";
 #pragma mark -
 #pragma mark Notifications Handling Methods
 
-- (void)onKeyboardWillAppearNotification:(NSNotification *)notification
+- (void)onKeyboardWillShowNotification:(NSNotification *)notification
 {
-    [self handleKeyboardWillHideNotification:notification
+    [self handleKeyboardWillShowNotification:notification
                               withScrollView:self.scrollView];
 }
 
-- (void)onKeyboardWillDisappearNotification:(NSNotification *)notification
+- (void)onKeyboardWillHideNotification:(NSNotification *)notification
 {
     [self handleKeyboardWillHideNotification:notification
                               withScrollView:self.scrollView];
