@@ -13,7 +13,7 @@
 		8402C6841C8B725500287DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8402C6831C8B725500287DC1 /* Assets.xcassets */; };
 		8402C6871C8B725500287DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8402C6851C8B725500287DC1 /* LaunchScreen.storyboard */; };
 		8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */; };
-		8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */; };
+		8402C6941C8B72E500287DC1 /* SOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6931C8B72E500287DC1 /* SOSViewController.m */; };
 		8402C6981C8B730700287DC1 /* NetworkCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6971C8B730700287DC1 /* NetworkCommunicator.m */; };
 		8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69B1C8B732D00287DC1 /* SOSModel.m */; };
 		8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C69E1C8B733A00287DC1 /* UserInfoModel.m */; };
@@ -21,6 +21,7 @@
 		8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6B31C8B852C00287DC1 /* ModelValidator.m */; };
 		8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6BB1C8B8A1B00287DC1 /* UIViewController+Helpers.m */; };
 		8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */; };
+		84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9967E1C8BB574008790BC /* SOSMaster.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,8 @@
 		8402C6881C8B725500287DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8402C68F1C8B72AB00287DC1 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
 		8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
-		8402C6921C8B72E500287DC1 /* SOSRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSRequestViewController.h; sourceTree = "<group>"; };
-		8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSRequestViewController.m; sourceTree = "<group>"; };
+		8402C6921C8B72E500287DC1 /* SOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSViewController.h; sourceTree = "<group>"; };
+		8402C6931C8B72E500287DC1 /* SOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSViewController.m; sourceTree = "<group>"; };
 		8402C6961C8B730700287DC1 /* NetworkCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkCommunicator.h; sourceTree = "<group>"; };
 		8402C6971C8B730700287DC1 /* NetworkCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCommunicator.m; sourceTree = "<group>"; };
 		8402C69A1C8B732D00287DC1 /* SOSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSModel.h; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		8402C6C11C8BA6FD00287DC1 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		8402C6C21C8BABC000287DC1 /* NSData+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Helpers.h"; sourceTree = "<group>"; };
 		8402C6C31C8BABC000287DC1 /* NSData+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Helpers.m"; sourceTree = "<group>"; };
+		84B9967C1C8BB290008790BC /* UserSessionObligatorily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSessionObligatorily.h; sourceTree = "<group>"; };
+		84B9967D1C8BB574008790BC /* SOSMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSMaster.h; sourceTree = "<group>"; };
+		84B9967E1C8BB574008790BC /* SOSMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSMaster.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +125,8 @@
 			children = (
 				8402C68F1C8B72AB00287DC1 /* RegisterUserViewController.h */,
 				8402C6901C8B72AB00287DC1 /* RegisterUserViewController.m */,
-				8402C6921C8B72E500287DC1 /* SOSRequestViewController.h */,
-				8402C6931C8B72E500287DC1 /* SOSRequestViewController.m */,
+				8402C6921C8B72E500287DC1 /* SOSViewController.h */,
+				8402C6931C8B72E500287DC1 /* SOSViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -161,6 +165,7 @@
 			children = (
 				8402C6A51C8B740C00287DC1 /* Singleton.h */,
 				8402C6B51C8B85E800287DC1 /* Serializable.h */,
+				84B9967C1C8BB290008790BC /* UserSessionObligatorily.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -170,6 +175,8 @@
 			children = (
 				8402C6B21C8B852C00287DC1 /* ModelValidator.h */,
 				8402C6B31C8B852C00287DC1 /* ModelValidator.m */,
+				84B9967D1C8BB574008790BC /* SOSMaster.h */,
+				84B9967E1C8BB574008790BC /* SOSMaster.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -265,13 +272,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8402C6941C8B72E500287DC1 /* SOSRequestViewController.m in Sources */,
+				8402C6941C8B72E500287DC1 /* SOSViewController.m in Sources */,
 				8402C67C1C8B725500287DC1 /* AppDelegate.m in Sources */,
 				8402C6C41C8BABC000287DC1 /* NSData+Helpers.m in Sources */,
 				8402C6B41C8B852C00287DC1 /* ModelValidator.m in Sources */,
 				8402C69C1C8B732D00287DC1 /* SOSModel.m in Sources */,
 				8402C6911C8B72AB00287DC1 /* RegisterUserViewController.m in Sources */,
 				8402C6791C8B725500287DC1 /* main.m in Sources */,
+				84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */,
 				8402C6BC1C8B8A1B00287DC1 /* UIViewController+Helpers.m in Sources */,
 				8402C6A31C8B73F000287DC1 /* AppStorage.m in Sources */,
 				8402C69F1C8B733A00287DC1 /* UserInfoModel.m in Sources */,
@@ -431,6 +439,7 @@
 				8402C68D1C8B725500287DC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

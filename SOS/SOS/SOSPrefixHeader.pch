@@ -11,6 +11,7 @@
 
 #import "Singleton.h"
 #import "Serializable.h"
+#import "UserSessionObligatorily.h"
 #import "TextStrings.h"
 #import "UIViewController+Helpers.h"
 #import "NSData+Helpers.h"

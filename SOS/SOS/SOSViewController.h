@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SOSRequestViewController : UIViewController
+@interface SOSViewController : UIViewController <UserSessionObligatorily>
 
 @end

@@ -292,7 +292,7 @@
         <!--View Controller-->
         <scene sceneID="sZ0-aA-jQm">
             <objects>
-                <viewController id="g7k-sV-7bX" sceneMemberID="viewController">
+                <viewController id="g7k-sV-7bX" customClass="SOSViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Mf-V4-Kps"/>
                         <viewControllerLayoutGuide type="bottom" id="xvn-AI-20P"/>
@@ -300,15 +300,114 @@
                     <view key="view" contentMode="scaleToFill" id="VVi-1l-buZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-Ib-mB5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOSButton" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-9K-ett">
+                                        <rect key="frame" x="152" y="253" width="295" height="295"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="295" id="LwD-cH-bs7"/>
+                                            <constraint firstAttribute="height" constant="295" id="aQn-GP-39e"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VcA-hJ-zm8" appends="YES" id="XJJ-Eq-hal"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lAU-9K-ett" firstAttribute="centerY" secondItem="eQJ-Ib-mB5" secondAttribute="centerY" id="0br-6E-El0"/>
+                                    <constraint firstItem="lAU-9K-ett" firstAttribute="centerX" secondItem="eQJ-Ib-mB5" secondAttribute="centerX" id="0cE-zN-cFe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImP-ZN-JEK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To cancel SOS, please, write down your secret keyword!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="map-Tm-HCe">
+                                        <rect key="frame" x="32" y="101" width="536" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECRET WORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCR-Ho-d6W">
+                                        <rect key="frame" x="20" y="360" width="560" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.36078431370000003" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-CU-h6o">
+                                        <rect key="frame" x="10" y="385" width="580" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="puS-NK-MBT"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterButton" translatesAutoresizingMaskIntoConstraints="NO" id="pPw-pT-28F" userLabel="Cancel SOS Alarm Button">
+                                        <rect key="frame" x="150" y="431" width="300" height="50"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="G6K-x8-umK"/>
+                                            <constraint firstAttribute="height" constant="50" id="OPf-Db-OXe"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel Alarm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-ui-Hse">
+                                        <rect key="frame" x="249" y="446" width="102" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SLd-CU-h6o" firstAttribute="leading" secondItem="ImP-ZN-JEK" secondAttribute="leading" constant="10" id="5Et-wp-Zgx"/>
+                                    <constraint firstItem="ZCR-Ho-d6W" firstAttribute="leading" secondItem="ImP-ZN-JEK" secondAttribute="leading" constant="20" id="Aha-Ud-r9y"/>
+                                    <constraint firstItem="pPw-pT-28F" firstAttribute="centerX" secondItem="ImP-ZN-JEK" secondAttribute="centerX" id="C8Z-xV-FjB"/>
+                                    <constraint firstItem="SLd-CU-h6o" firstAttribute="top" secondItem="ZCR-Ho-d6W" secondAttribute="bottom" constant="8" id="MUY-b7-MvK"/>
+                                    <constraint firstItem="pPw-pT-28F" firstAttribute="top" secondItem="SLd-CU-h6o" secondAttribute="bottom" constant="16" id="R3z-jc-ef7"/>
+                                    <constraint firstAttribute="trailing" secondItem="SLd-CU-h6o" secondAttribute="trailing" constant="10" id="RRv-w2-Tj5"/>
+                                    <constraint firstItem="SLd-CU-h6o" firstAttribute="centerY" secondItem="ImP-ZN-JEK" secondAttribute="centerY" id="SuI-hU-pfX"/>
+                                    <constraint firstItem="rvq-ui-Hse" firstAttribute="centerY" secondItem="pPw-pT-28F" secondAttribute="centerY" id="XoW-Rk-KZG"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZCR-Ho-d6W" secondAttribute="trailing" constant="20" id="d9O-HV-pDI"/>
+                                    <constraint firstAttribute="trailing" secondItem="map-Tm-HCe" secondAttribute="trailing" constant="32" id="g8U-vu-A23"/>
+                                    <constraint firstItem="map-Tm-HCe" firstAttribute="top" secondItem="ImP-ZN-JEK" secondAttribute="top" constant="101" id="iHM-UU-VsF"/>
+                                    <constraint firstItem="map-Tm-HCe" firstAttribute="leading" secondItem="ImP-ZN-JEK" secondAttribute="leading" constant="32" id="mhi-Xz-Lp5"/>
+                                    <constraint firstItem="rvq-ui-Hse" firstAttribute="centerX" secondItem="pPw-pT-28F" secondAttribute="centerX" id="nbO-VR-1xJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ImP-ZN-JEK" secondAttribute="trailing" id="0l6-69-hbc"/>
+                            <constraint firstItem="xvn-AI-20P" firstAttribute="top" secondItem="eQJ-Ib-mB5" secondAttribute="bottom" id="15s-jy-TIc"/>
+                            <constraint firstAttribute="trailing" secondItem="eQJ-Ib-mB5" secondAttribute="trailing" id="SEi-ew-uCI"/>
+                            <constraint firstItem="ImP-ZN-JEK" firstAttribute="leading" secondItem="VVi-1l-buZ" secondAttribute="leading" id="TNL-V2-ebZ"/>
+                            <constraint firstItem="xvn-AI-20P" firstAttribute="top" secondItem="ImP-ZN-JEK" secondAttribute="bottom" id="WcB-AD-FAn"/>
+                            <constraint firstItem="eQJ-Ib-mB5" firstAttribute="leading" secondItem="VVi-1l-buZ" secondAttribute="leading" id="fO9-lM-DUT"/>
+                            <constraint firstItem="eQJ-Ib-mB5" firstAttribute="top" secondItem="VVi-1l-buZ" secondAttribute="top" id="o9p-3V-iNG"/>
+                            <constraint firstItem="ImP-ZN-JEK" firstAttribute="top" secondItem="VVi-1l-buZ" secondAttribute="top" id="pu7-u7-uCw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activateSOSContainerView" destination="eQJ-Ib-mB5" id="K6S-zX-Ovf"/>
+                        <outlet property="deactivateSOSContainerView" destination="ImP-ZN-JEK" id="kHG-rh-sUt"/>
+                        <outlet property="secretCodeTextField" destination="SLd-CU-h6o" id="XPn-RP-Ckt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfy-E5-F5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VcA-hJ-zm8" userLabel="SOS Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onSOSTapped:" destination="g7k-sV-7bX" id="GdR-Qd-InK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="512" y="403"/>
         </scene>
     </scenes>
     <resources>
         <image name="RegisterButton" width="900" height="150"/>
+        <image name="SOSButton" width="295" height="295"/>
     </resources>
 </document>
