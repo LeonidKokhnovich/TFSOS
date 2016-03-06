@@ -22,16 +22,61 @@
     BOOL returnValue = NO;
     
     if (    model
-        &&  [self validateBasicStringParameter:model.firstName]
-        &&  [self validateBasicStringParameter:model.lastName]
-        &&  model.birthDate
+        &&  [self validateName:model.firstName]
+        &&  [self validateName:model.lastName]
+        &&  [self validateBirthDate:model.birthDate]
         &&  [self validateBasicStringParameter:model.homeAddress]
-        &&  [self validateBasicStringParameter:model.phoneNumber]
-        &&  [self validateBasicStringParameter:model.emergencyContact]
-        &&  [self validateBasicStringParameter:model.emergencyNumber]
+        &&  [self validatePhoneNumber:model.phoneNumber]
+        &&  [self validateName:model.emergencyContact]
+        &&  [self validatePhoneNumber:model.emergencyNumber]
         &&  [self validateBasicStringParameter:model.secretCode])
     {
         returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
++ (BOOL)validateName:(NSString *)input
+{
+    BOOL returnValue = NO;
+    
+    if (input) {
+        NSString *regex = @"/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u";
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        returnValue = [predicate evaluateWithObject:input];
+    }
+    
+    return returnValue;
+}
+
++ (BOOL)validateBirthDate:(NSNumber *)birthDateNumber
+{
+    BOOL returnValue = NO;
+    
+    NSString *stringRepresentation = [NSString stringWithFormat:@"%@", birthDateNumber];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyyMMdd"];
+    NSDate *birthDate = [format dateFromString:stringRepresentation];
+    
+    if (    birthDate
+        &&  [birthDate timeIntervalSinceNow] < 0)
+    {
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
++ (BOOL)validatePhoneNumber:(NSString *)phoneNumber
+{
+    BOOL returnValue = NO;
+    
+    if (phoneNumber) {
+        NSString *phoneRegex = @"^((\\+)|(00))[0-9]{6,14}$";
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+        returnValue = [predicate evaluateWithObject:phoneNumber];
     }
     
     return returnValue;
