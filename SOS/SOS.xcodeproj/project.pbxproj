@@ -24,8 +24,19 @@
 		84B9967F1C8BB574008790BC /* SOSMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9967E1C8BB574008790BC /* SOSMaster.m */; };
 		84B9968B1C8BDE6C008790BC /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9968A1C8BDE6C008790BC /* NSString+Helpers.m */; };
 		84CDFE4A1C8C92570048816C /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE491C8C92570048816C /* UIView+Helpers.m */; };
+		84CDFE621C8CBF8C0048816C /* SOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDFE611C8CBF8C0048816C /* SOSTests.m */; };
 		ABE1F4DF1B9A6440BE1EA38E /* libPods-SOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84CDFE641C8CBF8C0048816C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8402C66C1C8B725500287DC1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8402C6731C8B725500287DC1;
+			remoteInfo = SOS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		20929258F86DDBB3341EB1E8 /* Pods-SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SOS/Pods-SOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +81,9 @@
 		84B9968C1C8BF0CB008790BC /* NetworkingMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingMisc.h; sourceTree = "<group>"; };
 		84CDFE481C8C92570048816C /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		84CDFE491C8C92570048816C /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		84CDFE5F1C8CBF8C0048816C /* SOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CDFE611C8CBF8C0048816C /* SOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOSTests.m; sourceTree = "<group>"; };
+		84CDFE631C8CBF8C0048816C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2C6DDBA7F7B5039AC24117A /* libPods-SOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67016D55B582660EACC647D /* Pods-SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOS/Pods-SOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +94,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE1F4DF1B9A6440BE1EA38E /* libPods-SOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84CDFE5C1C8CBF8C0048816C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8402C6761C8B725500287DC1 /* SOS */,
+				84CDFE601C8CBF8C0048816C /* SOSTests */,
 				8402C6751C8B725500287DC1 /* Products */,
 				F7D3B310AA02FC0361A2D784 /* Pods */,
 				835BCD73EE9C2087860AA5C5 /* Frameworks */,
@@ -108,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8402C6741C8B725500287DC1 /* SOS.app */,
+				84CDFE5F1C8CBF8C0048816C /* SOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +254,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		84CDFE601C8CBF8C0048816C /* SOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				84CDFE611C8CBF8C0048816C /* SOSTests.m */,
+				84CDFE631C8CBF8C0048816C /* Info.plist */,
+			);
+			path = SOSTests;
+			sourceTree = "<group>";
+		};
 		F7D3B310AA02FC0361A2D784 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +295,24 @@
 			productReference = 8402C6741C8B725500287DC1 /* SOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		84CDFE5E1C8CBF8C0048816C /* SOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84CDFE661C8CBF8C0048816C /* Build configuration list for PBXNativeTarget "SOSTests" */;
+			buildPhases = (
+				84CDFE5B1C8CBF8C0048816C /* Sources */,
+				84CDFE5C1C8CBF8C0048816C /* Frameworks */,
+				84CDFE5D1C8CBF8C0048816C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84CDFE651C8CBF8C0048816C /* PBXTargetDependency */,
+			);
+			name = SOSTests;
+			productName = SOSTests;
+			productReference = 84CDFE5F1C8CBF8C0048816C /* SOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -275,6 +325,10 @@
 					8402C6731C8B725500287DC1 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SD6Z8TPPU4;
+					};
+					84CDFE5E1C8CBF8C0048816C = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 8402C6731C8B725500287DC1;
 					};
 				};
 			};
@@ -292,6 +346,7 @@
 			projectRoot = "";
 			targets = (
 				8402C6731C8B725500287DC1 /* SOS */,
+				84CDFE5E1C8CBF8C0048816C /* SOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,6 +359,13 @@
 				8402C6871C8B725500287DC1 /* LaunchScreen.storyboard in Resources */,
 				8402C6841C8B725500287DC1 /* Assets.xcassets in Resources */,
 				8402C6821C8B725500287DC1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84CDFE5D1C8CBF8C0048816C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +441,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84CDFE5B1C8CBF8C0048816C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84CDFE621C8CBF8C0048816C /* SOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84CDFE651C8CBF8C0048816C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8402C6731C8B725500287DC1 /* SOS */;
+			targetProxy = 84CDFE641C8CBF8C0048816C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8402C6801C8B725500287DC1 /* Main.storyboard */ = {
@@ -515,6 +593,30 @@
 			};
 			name = Release;
 		};
+		84CDFE671C8CBF8C0048816C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.team14.SOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SOS.app/SOS";
+			};
+			name = Debug;
+		};
+		84CDFE681C8CBF8C0048816C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.team14.SOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SOS.app/SOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,6 +637,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		84CDFE661C8CBF8C0048816C /* Build configuration list for PBXNativeTarget "SOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84CDFE671C8CBF8C0048816C /* Debug */,
+				84CDFE681C8CBF8C0048816C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
